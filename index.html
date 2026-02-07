@@ -635,82 +635,273 @@
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: linear-gradient(180deg, #0B1628 0%, #0E1A33 60%, #132240 100%);
+    background: #060B14;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    overflow: hidden;
+    transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1), visibility 0.6s cubic-bezier(0.4,0,0.2,1);
   }
   .login-gate.hidden {
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
   }
+
+  /* Layered background effects */
+  .login-bg-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .login-bg-gradient {
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 45%, rgba(196,149,90,0.04) 0%, transparent 70%),
+      radial-gradient(ellipse 120% 80% at 50% 50%, rgba(26,39,68,0.6) 0%, transparent 60%),
+      linear-gradient(180deg, #060B14 0%, #0A1222 30%, #0D1830 60%, #0A1222 100%);
+  }
+  .login-bg-grid {
+    background-image:
+      linear-gradient(rgba(196,149,90,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(196,149,90,0.025) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+  }
+
+  /* Concentric rings */
+  .login-rings {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .login-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(196,149,90,0.06);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .login-ring:nth-child(1) { width: 300px; height: 300px; border-color: rgba(196,149,90,0.08); }
+  .login-ring:nth-child(2) { width: 480px; height: 480px; border-color: rgba(196,149,90,0.05); }
+  .login-ring:nth-child(3) { width: 660px; height: 660px; border-color: rgba(196,149,90,0.03); }
+  .login-ring:nth-child(4) { width: 840px; height: 840px; border-color: rgba(196,149,90,0.015); }
+
+  /* Expanding pulse ring */
+  .login-pulse-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(196,149,90,0.12);
+    animation: ringExpand 8s cubic-bezier(0.25,0,0.25,1) infinite;
+    pointer-events: none;
+  }
+  @keyframes ringExpand {
+    0% { width: 200px; height: 200px; opacity: 0.4; }
+    100% { width: 900px; height: 900px; opacity: 0; }
+  }
+
+  /* Corner accents */
+  .login-corner {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    pointer-events: none;
+  }
+  .login-corner svg { width: 100%; height: 100%; }
+  .login-corner--tl { top: 32px; left: 32px; }
+  .login-corner--tr { top: 32px; right: 32px; transform: scaleX(-1); }
+  .login-corner--bl { bottom: 32px; left: 32px; transform: scaleY(-1); }
+  .login-corner--br { bottom: 32px; right: 32px; transform: scale(-1,-1); }
+
+  /* Content */
   .login-box {
+    position: relative;
+    z-index: 2;
     text-align: center;
-    max-width: 340px;
+    max-width: 380px;
     width: 100%;
-    padding: 0 24px;
+    padding: 0 28px;
   }
-  .login-box .login-flourish {
-    margin: 16px auto 6px;
+
+  .login-shield {
+    margin-bottom: 28px;
+    animation: loginFadeFloat 1s ease both;
+    animation-delay: 0.2s;
+    opacity: 0;
   }
-  .login-box .login-program {
-    font-family: 'Outfit', sans-serif;
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: var(--bronze);
-    margin-bottom: 36px;
+  @keyframes loginFadeFloat {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
   }
-  .login-box .login-title {
+
+  .login-brand {
+    animation: loginFadeFloat 1s ease both;
+    animation-delay: 0.45s;
+    opacity: 0;
+    margin-bottom: 8px;
+  }
+  .login-title {
     font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 500;
-    color: var(--cream);
-    letter-spacing: 2px;
-    margin-bottom: 4px;
+    font-size: 28px;
+    font-weight: 400;
+    color: rgba(232,220,200,0.9);
+    letter-spacing: 12px;
+    text-indent: 12px;
+    margin-bottom: 0;
+  }
+
+  .login-flourish-wrap {
+    animation: loginFadeFloat 1s ease both;
+    animation-delay: 0.6s;
+    opacity: 0;
+    margin: 12px 0 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+  .login-flourish-line {
+    flex: 1;
+    max-width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(196,149,90,0.3), transparent);
+  }
+  .login-flourish-diamond {
+    width: 6px;
+    height: 6px;
+    background: rgba(196,149,90,0.35);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+
+  .login-subtitle {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 6px;
+    text-indent: 6px;
+    color: var(--bronze);
+    margin-bottom: 48px;
+    font-weight: 400;
+    animation: loginFadeFloat 1s ease both;
+    animation-delay: 0.75s;
+    opacity: 0;
+  }
+
+  .login-form {
+    animation: loginFadeFloat 1s ease both;
+    animation-delay: 0.95s;
+    opacity: 0;
+  }
+
+  .login-field {
+    position: relative;
+    margin-bottom: 16px;
+  }
+  .login-field-label {
+    position: absolute;
+    top: -8px;
+    left: 16px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 8px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(196,149,90,0.45);
+    background: #0A1020;
+    padding: 0 6px;
+    z-index: 1;
   }
   .login-input {
     width: 100%;
-    padding: 13px 18px;
-    background: rgba(196,149,90,0.06);
-    border: 1px solid rgba(196,149,90,0.15);
-    border-radius: 8px;
-    color: var(--cream);
+    padding: 16px 20px;
+    background: rgba(196,149,90,0.03);
+    border: 1px solid rgba(196,149,90,0.1);
+    border-radius: 4px;
+    color: rgba(232,220,200,0.9);
     font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1px;
     outline: none;
-    margin-bottom: 14px;
-    transition: border-color 0.2s ease;
+    transition: all 0.3s ease;
   }
-  .login-input::placeholder { color: rgba(232,220,200,0.3); }
-  .login-input:focus { border-color: rgba(196,149,90,0.4); }
+  .login-input::placeholder { color: rgba(232,220,200,0.15); letter-spacing: 1px; }
+  .login-input:focus {
+    border-color: rgba(196,149,90,0.35);
+    background: rgba(196,149,90,0.05);
+    box-shadow: 0 0 0 3px rgba(196,149,90,0.04), 0 4px 20px rgba(0,0,0,0.2);
+  }
+
   .login-btn {
     width: 100%;
-    padding: 13px;
-    background: var(--bronze);
-    border: none;
-    border-radius: 8px;
-    color: #0B1628;
+    padding: 16px;
+    background: transparent;
+    border: 1px solid rgba(196,149,90,0.35);
+    border-radius: 4px;
+    color: var(--bronze);
     font-family: 'Outfit', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1.5px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-indent: 4px;
     cursor: pointer;
-    transition: background 0.2s ease;
+    transition: all 0.35s ease;
+    margin-top: 4px;
+    position: relative;
+    overflow: hidden;
   }
-  .login-btn:hover { background: #D4A86A; }
+  .login-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(196,149,90,0.1), rgba(196,149,90,0.02));
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  .login-btn:hover {
+    border-color: rgba(196,149,90,0.6);
+    color: var(--cream);
+    box-shadow: 0 0 30px rgba(196,149,90,0.08);
+  }
+  .login-btn:hover::before { opacity: 1; }
+
   .login-error {
+    font-family: 'DM Sans', sans-serif;
     font-size: 12px;
-    color: #E07A5F;
-    margin-top: 12px;
+    font-weight: 400;
+    color: #D4806A;
+    margin-top: 16px;
     height: 18px;
-    transition: opacity 0.2s ease;
+    letter-spacing: 0.5px;
+    transition: opacity 0.3s ease;
+  }
+
+  .login-footer-section {
+    animation: loginFadeFloat 1s ease both;
+    animation-delay: 1.15s;
+    opacity: 0;
+    margin-top: 48px;
+  }
+  .login-footer-line {
+    width: 24px;
+    height: 1px;
+    background: rgba(196,149,90,0.15);
+    margin: 0 auto 14px;
   }
   .login-footer {
-    margin-top: 24px;
-    font-size: 11px;
-    color: rgba(232,220,200,0.2);
+    font-family: 'Outfit', sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-indent: 3px;
+    color: rgba(232,220,200,0.12);
+    text-transform: uppercase;
   }
 
   /* ── SCROLLBAR ── */
@@ -735,27 +926,71 @@
 
 <!-- ═══════════════ LOGIN GATE ═══════════════ -->
 <div class="login-gate" id="loginGate">
+  <!-- Background layers -->
+  <div class="login-bg-layer login-bg-gradient"></div>
+  <div class="login-bg-layer login-bg-grid"></div>
+
+  <!-- Concentric rings -->
+  <div class="login-rings">
+    <div class="login-ring"></div>
+    <div class="login-ring"></div>
+    <div class="login-ring"></div>
+    <div class="login-ring"></div>
+  </div>
+  <div class="login-pulse-ring"></div>
+
+  <!-- Corner accents -->
+  <div class="login-corner login-corner--tl"><svg viewBox="0 0 60 60" fill="none"><path d="M0 40 L0 0 L40 0" stroke="rgba(196,149,90,0.12)" stroke-width="0.5"/><circle cx="0" cy="0" r="2" fill="rgba(196,149,90,0.15)"/></svg></div>
+  <div class="login-corner login-corner--tr"><svg viewBox="0 0 60 60" fill="none"><path d="M0 40 L0 0 L40 0" stroke="rgba(196,149,90,0.12)" stroke-width="0.5"/><circle cx="0" cy="0" r="2" fill="rgba(196,149,90,0.15)"/></svg></div>
+  <div class="login-corner login-corner--bl"><svg viewBox="0 0 60 60" fill="none"><path d="M0 40 L0 0 L40 0" stroke="rgba(196,149,90,0.12)" stroke-width="0.5"/><circle cx="0" cy="0" r="2" fill="rgba(196,149,90,0.15)"/></svg></div>
+  <div class="login-corner login-corner--br"><svg viewBox="0 0 60 60" fill="none"><path d="M0 40 L0 0 L40 0" stroke="rgba(196,149,90,0.12)" stroke-width="0.5"/><circle cx="0" cy="0" r="2" fill="rgba(196,149,90,0.15)"/></svg></div>
+
+  <!-- Login content -->
   <div class="login-box">
-    <svg width="72" height="86" viewBox="0 0 80 96" style="margin-bottom: 16px;">
-      <path d="M40 4 L72 18 L72 52 Q72 76 40 88 Q8 76 8 52 L8 18 Z" fill="#0F1E38" stroke="#C4955A" stroke-width="1"/>
-      <text x="40" y="50" font-family="Playfair Display" font-style="italic" font-size="30" fill="#C4955A" text-anchor="middle" font-weight="500">TC</text>
-      <path d="M28 64 Q34 68 40 64 Q46 60 52 64" fill="none" stroke="#C4955A" stroke-width="0.4" opacity="0.35"/>
-    </svg>
-    <div class="login-title">TRIUMPH</div>
-    <svg class="login-flourish" width="180" height="14" viewBox="0 0 200 16">
-      <path d="M30 8 Q50 4 70 8 Q85 12 100 8 Q115 4 130 8 Q150 12 170 8" fill="none" stroke="#C4955A" stroke-width="0.6" opacity="0.45"/>
-      <path d="M30 8 Q24 4 26 0" fill="none" stroke="#C4955A" stroke-width="0.4" opacity="0.3"/>
-      <path d="M170 8 Q176 4 174 0" fill="none" stroke="#C4955A" stroke-width="0.4" opacity="0.3"/>
-      <circle cx="100" cy="8" r="1" fill="#C4955A" opacity="0.4"/>
-    </svg>
-    <div class="login-program">LAB</div>
-    <form onsubmit="return handleLogin(event)">
-      <input class="login-input" type="text" id="loginUser" placeholder="Username" autocomplete="off" autofocus />
-      <input class="login-input" type="password" id="loginPass" placeholder="Password" />
-      <button class="login-btn" type="submit">SIGN IN</button>
+    <div class="login-shield">
+      <svg width="64" height="76" viewBox="0 0 80 96">
+        <defs>
+          <linearGradient id="shieldGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#C4955A" stop-opacity="0.7"/>
+            <stop offset="100%" stop-color="#8C7444" stop-opacity="0.4"/>
+          </linearGradient>
+        </defs>
+        <path d="M40 4 L72 18 L72 52 Q72 76 40 88 Q8 76 8 52 L8 18 Z" fill="rgba(15,30,56,0.6)" stroke="url(#shieldGrad)" stroke-width="1"/>
+        <path d="M40 10 L66 22 L66 50 Q66 72 40 82 Q14 72 14 50 L14 22 Z" fill="none" stroke="rgba(196,149,90,0.08)" stroke-width="0.5"/>
+        <text x="40" y="50" font-family="Playfair Display" font-style="italic" font-size="28" fill="rgba(196,149,90,0.85)" text-anchor="middle" dominant-baseline="middle" font-weight="500">TC</text>
+        <path d="M28 64 Q34 68 40 64 Q46 60 52 64" fill="none" stroke="rgba(196,149,90,0.25)" stroke-width="0.5"/>
+      </svg>
+    </div>
+
+    <div class="login-brand">
+      <div class="login-title">TRIUMPH</div>
+    </div>
+
+    <div class="login-flourish-wrap">
+      <div class="login-flourish-line"></div>
+      <div class="login-flourish-diamond"></div>
+      <div class="login-flourish-line"></div>
+    </div>
+
+    <div class="login-subtitle">LAB</div>
+
+    <form class="login-form" onsubmit="return handleLogin(event)">
+      <div class="login-field">
+        <span class="login-field-label">Username</span>
+        <input class="login-input" type="text" id="loginUser" placeholder="Enter username" autocomplete="off" autofocus />
+      </div>
+      <div class="login-field">
+        <span class="login-field-label">Password</span>
+        <input class="login-input" type="password" id="loginPass" placeholder="Enter password" />
+      </div>
+      <button class="login-btn" type="submit">ENTER</button>
     </form>
     <div class="login-error" id="loginError">&nbsp;</div>
-    <div class="login-footer">Triumph Capital Management</div>
+
+    <div class="login-footer-section">
+      <div class="login-footer-line"></div>
+      <div class="login-footer">Triumph Capital Management</div>
+    </div>
   </div>
 </div>
 
