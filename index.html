@@ -1116,12 +1116,8 @@
 
     <form class="login-form" onsubmit="return handleLogin(event)">
       <div class="login-field">
-        <span class="login-field-label">Username</span>
-        <input class="login-input" type="text" id="loginUser" placeholder="Enter username" autocomplete="off" autofocus />
-      </div>
-      <div class="login-field">
         <span class="login-field-label">Password</span>
-        <input class="login-input" type="password" id="loginPass" placeholder="Enter password" />
+        <input class="login-input" type="password" id="loginPass" placeholder="Enter password" autocomplete="off" autofocus />
       </div>
       <button class="login-btn" type="submit">ENTER</button>
     </form>
@@ -1526,14 +1522,13 @@
   // ── LOGIN GATE ──
   function handleLogin(e) {
     e.preventDefault();
-    const u = document.getElementById('loginUser').value.trim();
     const p = document.getElementById('loginPass').value;
-    if (u === 'tcm' && p === 'tcm2026') {
+    if (p === 'TCM2026') {
       document.getElementById('loginGate').classList.add('hidden');
       sessionStorage.setItem('tlab_auth', '1');
     } else {
       const err = document.getElementById('loginError');
-      err.textContent = 'Invalid credentials. Please try again.';
+      err.textContent = 'Invalid password. Please try again.';
       document.getElementById('loginPass').value = '';
       document.getElementById('loginPass').focus();
     }
