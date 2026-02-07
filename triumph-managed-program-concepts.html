@@ -330,6 +330,46 @@
     background: var(--accent);
     margin-bottom: 20px;
   }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .header { padding: 32px 20px 28px; }
+    .header h1 { font-size: 26px; }
+    .header p { font-size: 14px; }
+
+    .concept-section { padding: 36px 20px; }
+    .concept-title { font-size: 22px; }
+    .concept-subtitle { font-size: 13px; margin-bottom: 24px; }
+
+    .concept-grid { grid-template-columns: 1fr; }
+
+    .logo-display { height: 240px; }
+    .logo-display svg { max-width: 90%; height: auto; }
+
+    .palette-card { padding: 20px; }
+    .palette-row { flex-wrap: wrap; gap: 8px; }
+    .swatch { min-width: 60px; flex: 1 1 calc(33% - 8px); height: 52px; }
+    .swatch-label { font-size: 9px; }
+    .palette-notes { font-size: 13px; margin-top: 32px; }
+
+    .type-card { padding: 20px; }
+
+    .mockup-card { grid-column: auto; }
+    .mock-nav { padding: 12px 16px; flex-direction: column; gap: 10px; align-items: flex-start; }
+    .mock-nav-links { gap: 14px; font-size: 11px; flex-wrap: wrap; }
+    .mock-hero { padding: 28px 16px 24px; }
+    .mock-hero h2 { font-size: 20px; }
+    .mock-cards-row { flex-wrap: wrap; padding: 0 16px 20px; gap: 10px; }
+    .mock-stat-card { min-width: calc(50% - 8px); max-width: none; padding: 16px; }
+    .mock-stat-card .num { font-size: 20px; }
+
+    .concept-notes { padding: 20px; }
+    .concept-notes p { font-size: 13px; }
+
+    .recommendation { padding: 36px 20px; }
+    .recommendation h3 { font-size: 20px; }
+    .recommendation p { font-size: 13px; }
+  }
 </style>
 </head>
 <body>

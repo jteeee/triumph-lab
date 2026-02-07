@@ -246,6 +246,39 @@
   }
   .mock-stat-card .num { font-size: 20px; font-weight: 700; margin-bottom: 3px; }
   .mock-stat-card .label { font-size: 10px; opacity: 0.45; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .header { padding: 32px 20px 28px; }
+    .header h1 { font-size: 26px; }
+    .header p { font-size: 14px; }
+
+    .concept-section { padding: 36px 20px; }
+    .concept-title { font-size: 22px; }
+    .concept-subtitle { font-size: 13px; margin-bottom: 24px; }
+
+    .logo-grid { grid-template-columns: 1fr; }
+    .logo-display { height: 220px; }
+    .logo-display svg { max-width: 85%; height: auto; }
+
+    .mock-nav { padding: 12px 16px; flex-direction: column; gap: 10px; align-items: flex-start; }
+    .mock-nav-links { gap: 14px; font-size: 11px; flex-wrap: wrap; }
+    .mock-hero { padding: 28px 16px 20px; }
+    .mock-hero h2 { font-size: 19px; }
+    .mock-cards-row { flex-wrap: wrap; padding: 0 16px 20px; gap: 10px; }
+    .mock-stat-card { min-width: calc(50% - 8px); max-width: none; padding: 16px; }
+    .mock-stat-card .num { font-size: 18px; }
+
+    .concept-notes { padding: 20px; }
+    .concept-notes p { font-size: 13px; }
+
+    .comparison { padding: 36px 20px; }
+    .comparison h3 { font-size: 20px; }
+    .comp-grid { grid-template-columns: 1fr; }
+    .comp-card-logo { height: 120px; }
+    .comp-card-body { padding: 16px; }
+    .comp-card-body p { font-size: 12px; }
+  }
 </style>
 </head>
 <body>
