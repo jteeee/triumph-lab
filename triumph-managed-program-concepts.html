@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triumph Managed Program — Brand Concepts</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700&family=Crimson+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0C0E12;
+    --surface: #14161C;
+    --surface2: #1C1F28;
+    --border: #2A2D38;
+    --text: #E8E6E3;
+    --text-muted: #8B8D94;
+    --accent: #C9A84C;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  .header {
+    padding: 60px 48px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .header p {
+    color: var(--text-muted);
+    font-size: 16px;
+    max-width: 700px;
+    line-height: 1.7;
+  }
+
+  /* SECTION */
+  .concept-section {
+    padding: 56px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .concept-number {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .concept-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #fff;
+  }
+  .concept-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    max-width: 600px;
+  }
+
+  .concept-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  /* LOGO CARD */
+  .logo-card {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+  .logo-display {
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .logo-display svg {
+    filter: drop-shadow(0 2px 12px rgba(0,0,0,0.3));
+  }
+  .logo-label {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Outfit', sans-serif;
+  }
+
+  /* PALETTE CARD */
+  .palette-card {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 28px;
+    border: 1px solid var(--border);
+  }
+  .palette-card h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+  .palette-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .swatch {
+    flex: 1;
+    height: 64px;
+    border-radius: 10px;
+    position: relative;
+    transition: transform 0.2s;
+  }
+  .swatch:hover { transform: scale(1.05); }
+  .swatch-label {
+    position: absolute;
+    bottom: -22px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 10px;
+    font-family: 'DM Sans', monospace;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+  .palette-notes {
+    margin-top: 36px;
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* MOCKUP CARD */
+  .mockup-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    grid-column: 1 / -1;
+  }
+  .mockup-bar {
+    height: 36px;
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    gap: 6px;
+  }
+  .mockup-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+  .mockup-content {
+    padding: 0;
+    min-height: 200px;
+  }
+
+  /* NAV MOCKUP */
+  .mock-nav {
+    display: flex;
+    align-items: center;
+    padding: 16px 32px;
+    justify-content: space-between;
+  }
+  .mock-nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .mock-nav-links {
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+  }
+  .mock-nav-links span { opacity: 0.5; }
+  .mock-hero {
+    padding: 48px 32px 40px;
+    text-align: center;
+  }
+  .mock-hero h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .mock-hero p {
+    font-size: 13px;
+    opacity: 0.6;
+    margin-bottom: 20px;
+  }
+  .mock-btn {
+    display: inline-block;
+    padding: 10px 28px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .mock-cards-row {
+    display: flex;
+    gap: 16px;
+    padding: 0 32px 32px;
+    justify-content: center;
+  }
+  .mock-stat-card {
+    flex: 1;
+    max-width: 200px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .mock-stat-card .num {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .mock-stat-card .label {
+    font-size: 11px;
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* TYPOGRAPHY PREVIEW */
+  .type-card {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 28px;
+    border: 1px solid var(--border);
+  }
+  .type-card h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+  .type-sample {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .type-sample:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .type-sample .role {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  /* FULL WIDTH NOTES */
+  .concept-notes {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 24px 28px;
+    border: 1px solid var(--border);
+    margin-top: 24px;
+  }
+  .concept-notes h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .concept-notes p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  /* RECOMMENDATION SECTION */
+  .recommendation {
+    padding: 56px 48px;
+    background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+  }
+  .recommendation h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .recommendation p {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.8;
+    max-width: 700px;
+  }
+
+  .divider-line {
+    width: 48px;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<div class="header">
+  <div class="header-label">Brand Identity Concepts</div>
+  <h1>Triumph Managed Program</h1>
+  <p>Sub-brand exploration for the advisor-facing managed model portal. Three distinct directions — each maintains a family resemblance to Triumph Capital Management while carving its own identity as a professional, internal program.</p>
+</div>
+
+<!-- ===================== CONCEPT 1 ===================== -->
+<div class="concept-section">
+  <div class="concept-number">Concept 01</div>
+  <div class="concept-title">Heritage Elevated</div>
+  <div class="concept-subtitle">Deep navy + warm gold shifted to a refined copper/bronze — classic and institutional, but with a modern edge that signals "this is the premium inner program."</div>
+
+  <div class="concept-grid">
+    <!-- Logo on dark bg -->
+    <div class="logo-card">
+      <div class="logo-display" style="background: linear-gradient(135deg, #0B1628 0%, #132240 60%, #0E1A33 100%);">
+        <svg width="280" height="180" viewBox="0 0 280 180">
+          <!-- Shield shape -->
+          <path d="M140 20 L210 50 L210 110 Q210 150 140 170 Q70 150 70 110 L70 50 Z" fill="none" stroke="#C4955A" stroke-width="1.5" opacity="0.9"/>
+          <path d="M140 30 L200 56 L200 108 Q200 142 140 160 Q80 142 80 108 L80 56 Z" fill="none" stroke="#C4955A" stroke-width="0.5" opacity="0.3"/>
+          <!-- T monogram -->
+          <text x="140" y="108" font-family="Playfair Display, serif" font-size="52" font-weight="600" fill="#C4955A" text-anchor="middle" dominant-baseline="middle">T</text>
+          <!-- M below -->
+          <text x="140" y="130" font-family="Outfit, sans-serif" font-size="10" font-weight="500" fill="#C4955A" text-anchor="middle" letter-spacing="4" opacity="0.7">MANAGED</text>
+        </svg>
+        <div class="logo-label">Primary Mark — Dark</div>
+      </div>
+    </div>
+
+    <!-- Logo on light bg -->
+    <div class="logo-card">
+      <div class="logo-display" style="background: linear-gradient(135deg, #F5F2ED 0%, #EDE8E0 100%);">
+        <svg width="340" height="160" viewBox="0 0 340 160">
+          <!-- Horizontal lockup -->
+          <path d="M60 30 L100 45 L100 85 Q100 108 60 118 Q20 108 20 85 L20 45 Z" fill="none" stroke="#1A2744" stroke-width="1.2"/>
+          <text x="60" y="80" font-family="Playfair Display, serif" font-size="32" font-weight="600" fill="#1A2744" text-anchor="middle" dominant-baseline="middle">T</text>
+          <!-- Text -->
+          <text x="124" y="62" font-family="Playfair Display, serif" font-size="20" font-weight="500" fill="#1A2744">Triumph</text>
+          <text x="124" y="82" font-family="Outfit, sans-serif" font-size="10" font-weight="500" fill="#8C7444" letter-spacing="3.5">MANAGED PROGRAM</text>
+          <line x1="124" y1="92" x2="245" y2="92" stroke="#1A2744" stroke-width="0.5" opacity="0.2"/>
+          <text x="124" y="106" font-family="DM Sans, sans-serif" font-size="8" fill="#999" letter-spacing="1">CAPITAL MANAGEMENT</text>
+        </svg>
+        <div class="logo-label" style="color: rgba(0,0,0,0.3);">Horizontal Lockup — Light</div>
+      </div>
+    </div>
+
+    <!-- Palette -->
+    <div class="palette-card">
+      <h4>Color Palette</h4>
+      <div class="palette-row">
+        <div class="swatch" style="background: #0B1628;"><div class="swatch-label">#0B1628<br>Midnight Navy</div></div>
+        <div class="swatch" style="background: #1A2744;"><div class="swatch-label">#1A2744<br>Deep Slate</div></div>
+        <div class="swatch" style="background: #C4955A;"><div class="swatch-label">#C4955A<br>Antique Bronze</div></div>
+        <div class="swatch" style="background: #E8DCC8;"><div class="swatch-label">#E8DCC8<br>Warm Parchment</div></div>
+        <div class="swatch" style="background: #F5F2ED;"><div class="swatch-label">#F5F2ED<br>Ivory</div></div>
+      </div>
+      <div class="palette-notes">
+        Shifts the parent brand's blue palette deeper and more muted, swapping any bright gold for a sophisticated bronze/copper accent. The result reads as "same family, premium tier." The warm parchment and ivory give the light mode a distinctly different feel from the main site.
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="type-card">
+      <h4>Typography</h4>
+      <div class="type-sample">
+        <div class="role">Display / Headings</div>
+        <div style="font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 500; color: #fff;">Playfair Display</div>
+      </div>
+      <div class="type-sample">
+        <div class="role">UI / Labels / Navigation</div>
+        <div style="font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: #C4955A;">Outfit — Tracked Out</div>
+      </div>
+      <div class="type-sample">
+        <div class="role">Body / Data / Tables</div>
+        <div style="font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--text-muted);">DM Sans — Clean and readable for dashboards</div>
+      </div>
+    </div>
+
+    <!-- Portal Mockup -->
+    <div class="mockup-card">
+      <div class="mockup-bar">
+        <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+      </div>
+      <div class="mockup-content" style="background: linear-gradient(180deg, #0B1628 0%, #111D35 100%); color: #E8DCC8;">
+        <div class="mock-nav" style="border-bottom: 1px solid rgba(196,149,90,0.15);">
+          <div class="mock-nav-brand" style="color: #C4955A;">
+            <svg width="24" height="28" viewBox="0 0 24 28"><path d="M12 2 L22 7 L22 17 Q22 24 12 27 Q2 24 2 17 L2 7 Z" fill="none" stroke="#C4955A" stroke-width="1"/><text x="12" y="17" font-family="Playfair Display" font-size="11" fill="#C4955A" text-anchor="middle" font-weight="600">T</text></svg>
+            <span style="color: #E8DCC8; font-family: 'Playfair Display', serif; font-weight: 500;">Triumph <span style="color: #C4955A; font-family: 'Outfit', sans-serif; font-size: 10px; letter-spacing: 2px;">MANAGED</span></span>
+          </div>
+          <div class="mock-nav-links" style="color: #E8DCC8;">
+            <span style="opacity: 1; color: #C4955A;">Dashboard</span>
+            <span>Models</span>
+            <span>Accounts</span>
+            <span>Reports</span>
+          </div>
+        </div>
+        <div class="mock-hero">
+          <h2 style="font-family: 'Playfair Display', serif; color: #E8DCC8;">Welcome back, Advisor</h2>
+          <p style="color: rgba(232,220,200,0.5);">Your managed models at a glance</p>
+        </div>
+        <div class="mock-cards-row">
+          <div class="mock-stat-card" style="background: rgba(196,149,90,0.08); border: 1px solid rgba(196,149,90,0.15); color: #E8DCC8;">
+            <div class="num" style="color: #C4955A;">47</div>
+            <div class="label">Enrolled Accounts</div>
+          </div>
+          <div class="mock-stat-card" style="background: rgba(196,149,90,0.08); border: 1px solid rgba(196,149,90,0.15); color: #E8DCC8;">
+            <div class="num" style="color: #C4955A;">$12.4M</div>
+            <div class="label">Total AUM</div>
+          </div>
+          <div class="mock-stat-card" style="background: rgba(196,149,90,0.08); border: 1px solid rgba(196,149,90,0.15); color: #E8DCC8;">
+            <div class="num" style="color: #C4955A;">6</div>
+            <div class="label">Active Models</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept-notes">
+    <h4>Design Rationale</h4>
+    <p>This concept takes the existing Triumph brand DNA (navy, gold, serif typography, shield imagery) and refines it into a more exclusive, institutional feel. The shield + T monogram creates a crest-like mark that nods to the parent "Triumph" name without replicating the full logo. Bronze replaces bright gold for a more understated, modern luxury feel. Advisors immediately recognize the connection to Triumph but understand this is a distinct, professional-tier platform.</p>
+  </div>
+</div>
+
+<!-- ===================== CONCEPT 2 ===================== -->
+<div class="concept-section">
+  <div class="concept-number">Concept 02</div>
+  <div class="concept-title">Modern Authority</div>
+  <div class="concept-subtitle">Charcoal + steel blue + teal accent — a tech-forward take that positions the managed program as a sophisticated, data-driven platform while maintaining the Triumph gravitas.</div>
+
+  <div class="concept-grid">
+    <!-- Logo on dark bg -->
+    <div class="logo-card">
+      <div class="logo-display" style="background: linear-gradient(135deg, #141719 0%, #1A1E22 60%, #111416 100%);">
+        <svg width="300" height="160" viewBox="0 0 300 160">
+          <!-- Abstract upward arrow / peak -->
+          <path d="M130 100 L150 40 L170 100" fill="none" stroke="#4FA8B5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M120 100 L150 28 L180 100" fill="none" stroke="#4FA8B5" stroke-width="0.5" opacity="0.25"/>
+          <!-- Text -->
+          <text x="150" y="122" font-family="Sora, sans-serif" font-size="16" font-weight="600" fill="#E2E5E8" text-anchor="middle" letter-spacing="1">TRIUMPH</text>
+          <text x="150" y="140" font-family="Sora, sans-serif" font-size="9" font-weight="400" fill="#4FA8B5" text-anchor="middle" letter-spacing="4">MANAGED PROGRAM</text>
+        </svg>
+        <div class="logo-label">Primary — Dark</div>
+      </div>
+    </div>
+
+    <!-- Logo on light bg -->
+    <div class="logo-card">
+      <div class="logo-display" style="background: linear-gradient(135deg, #F7F8FA 0%, #EEF0F3 100%);">
+        <svg width="320" height="140" viewBox="0 0 320 140">
+          <!-- Icon -->
+          <path d="M50 85 L68 30 L86 85" fill="none" stroke="#2A7A86" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Text lockup -->
+          <text x="110" y="58" font-family="Sora, sans-serif" font-size="18" font-weight="600" fill="#1A1E22" letter-spacing="0.5">TRIUMPH</text>
+          <line x1="110" y1="68" x2="220" y2="68" stroke="#2A7A86" stroke-width="0.5" opacity="0.4"/>
+          <text x="110" y="84" font-family="Sora, sans-serif" font-size="9" font-weight="400" fill="#2A7A86" letter-spacing="3.5">MANAGED PROGRAM</text>
+          <text x="110" y="100" font-family="DM Sans, sans-serif" font-size="7" fill="#999" letter-spacing="1">BY TRIUMPH CAPITAL MANAGEMENT</text>
+        </svg>
+        <div class="logo-label" style="color: rgba(0,0,0,0.3);">Horizontal — Light</div>
+      </div>
+    </div>
+
+    <!-- Palette -->
+    <div class="palette-card">
+      <h4>Color Palette</h4>
+      <div class="palette-row">
+        <div class="swatch" style="background: #141719;"><div class="swatch-label">#141719<br>Carbon</div></div>
+        <div class="swatch" style="background: #2B3640;"><div class="swatch-label">#2B3640<br>Steel</div></div>
+        <div class="swatch" style="background: #4FA8B5;"><div class="swatch-label">#4FA8B5<br>Teal</div></div>
+        <div class="swatch" style="background: #2A7A86;"><div class="swatch-label">#2A7A86<br>Deep Teal</div></div>
+        <div class="swatch" style="background: #F7F8FA;"><div class="swatch-label">#F7F8FA<br>Cloud</div></div>
+      </div>
+      <div class="palette-notes">
+        Moves away from warm tones entirely. The teal accent is a cousin of blue (maintaining the trust/finance association) but unique enough to feel like its own brand. Charcoal base gives a modern, fintech-adjacent feel that signals data, precision, and technology.
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="type-card">
+      <h4>Typography</h4>
+      <div class="type-sample">
+        <div class="role">Display / Headings</div>
+        <div style="font-family: 'Sora', sans-serif; font-size: 24px; font-weight: 600; color: #fff; letter-spacing: 0.5px;">Sora Semibold</div>
+      </div>
+      <div class="type-sample">
+        <div class="role">UI / Labels</div>
+        <div style="font-family: 'Sora', sans-serif; font-size: 13px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: #4FA8B5;">Sora — Light Tracked</div>
+      </div>
+      <div class="type-sample">
+        <div class="role">Body / Data</div>
+        <div style="font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--text-muted);">DM Sans — Consistent with data tables</div>
+      </div>
+    </div>
+
+    <!-- Portal Mockup -->
+    <div class="mockup-card">
+      <div class="mockup-bar">
+        <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+      </div>
+      <div class="mockup-content" style="background: #141719; color: #E2E5E8;">
+        <div class="mock-nav" style="border-bottom: 1px solid rgba(79,168,181,0.12);">
+          <div class="mock-nav-brand">
+            <svg width="20" height="24" viewBox="0 0 20 24"><path d="M2 18 L10 4 L18 18" fill="none" stroke="#4FA8B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span style="font-family: 'Sora', sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 0.5px;">TRIUMPH <span style="color: #4FA8B5; font-weight: 400;">MANAGED</span></span>
+          </div>
+          <div class="mock-nav-links" style="font-family: 'Sora', sans-serif; font-size: 12px;">
+            <span style="opacity: 1; color: #4FA8B5;">Dashboard</span>
+            <span>Models</span>
+            <span>Accounts</span>
+            <span>Analytics</span>
+          </div>
+        </div>
+        <div class="mock-hero">
+          <h2 style="font-family: 'Sora', sans-serif; font-weight: 600; font-size: 22px; color: #E2E5E8;">Model Performance Overview</h2>
+          <p style="color: rgba(226,229,232,0.4); font-family: 'DM Sans', sans-serif;">Real-time portfolio intelligence across enrolled accounts</p>
+        </div>
+        <div class="mock-cards-row">
+          <div class="mock-stat-card" style="background: rgba(79,168,181,0.06); border: 1px solid rgba(79,168,181,0.12); color: #E2E5E8;">
+            <div class="num" style="color: #4FA8B5; font-family: 'Sora', sans-serif;">47</div>
+            <div class="label" style="font-family: 'DM Sans', sans-serif;">Enrolled</div>
+          </div>
+          <div class="mock-stat-card" style="background: rgba(79,168,181,0.06); border: 1px solid rgba(79,168,181,0.12); color: #E2E5E8;">
+            <div class="num" style="color: #4FA8B5; font-family: 'Sora', sans-serif;">$12.4M</div>
+            <div class="label" style="font-family: 'DM Sans', sans-serif;">Total AUM</div>
+          </div>
+          <div class="mock-stat-card" style="background: rgba(79,168,181,0.06); border: 1px solid rgba(79,168,181,0.12); color: #E2E5E8;">
+            <div class="num" style="color: #4FA8B5; font-family: 'Sora', sans-serif;">+8.2%</div>
+            <div class="label" style="font-family: 'DM Sans', sans-serif;">YTD Return</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept-notes">
+    <h4>Design Rationale</h4>
+    <p>This direction breaks further from the parent brand to position the Managed Program as a modern, technology-forward platform. The abstract peak/arrow symbol represents growth and upward trajectory — core to what a model program delivers. The all-sans-serif type system (Sora) creates a clean, dashboard-native aesthetic that feels purpose-built for advisors interacting with data. The teal accent keeps it in the "finance blue" family without being identical to the parent brand.</p>
+  </div>
+</div>
+
+<!-- ===================== CONCEPT 3 ===================== -->
+<div class="concept-section">
+  <div class="concept-number">Concept 03</div>
+  <div class="concept-title">Refined Distinction</div>
+  <div class="concept-subtitle">Warm slate + muted sage green + gold thread — a sophisticated departure that says "this is our in-house program" with quiet confidence. Approachable yet institutional.</div>
+
+  <div class="concept-grid">
+    <!-- Logo on dark bg -->
+    <div class="logo-card">
+      <div class="logo-display" style="background: linear-gradient(135deg, #1C2024 0%, #252A30 60%, #1A1F23 100%);">
+        <svg width="300" height="170" viewBox="0 0 300 170">
+          <!-- Laurel left -->
+          <path d="M110 120 Q95 100 100 78 Q95 60 108 45" fill="none" stroke="#7B9E7F" stroke-width="1.2" opacity="0.6"/>
+          <path d="M105 115 Q88 98 92 78 Q88 60 100 42" fill="none" stroke="#7B9E7F" stroke-width="0.6" opacity="0.3"/>
+          <!-- Laurel right -->
+          <path d="M190 120 Q205 100 200 78 Q205 60 192 45" fill="none" stroke="#7B9E7F" stroke-width="1.2" opacity="0.6"/>
+          <path d="M195 115 Q212 98 208 78 Q212 60 200 42" fill="none" stroke="#7B9E7F" stroke-width="0.6" opacity="0.3"/>
+          <!-- TMP monogram -->
+          <text x="150" y="88" font-family="Cormorant Garamond, serif" font-size="38" font-weight="600" fill="#E8E2D6" text-anchor="middle" dominant-baseline="middle" letter-spacing="4">TMP</text>
+          <!-- Subtext -->
+          <line x1="115" y1="110" x2="185" y2="110" stroke="#C4A55A" stroke-width="0.5" opacity="0.4"/>
+          <text x="150" y="128" font-family="Outfit, sans-serif" font-size="8" font-weight="400" fill="#7B9E7F" text-anchor="middle" letter-spacing="4">TRIUMPH MANAGED PROGRAM</text>
+          <text x="150" y="145" font-family="DM Sans, sans-serif" font-size="7" fill="rgba(232,226,214,0.3)" text-anchor="middle" letter-spacing="1">CAPITAL MANAGEMENT</text>
+        </svg>
+        <div class="logo-label">Stacked — Dark</div>
+      </div>
+    </div>
+
+    <!-- Logo on light bg -->
+    <div class="logo-card">
+      <div class="logo-display" style="background: linear-gradient(135deg, #F4F1EC 0%, #EBE7DF 100%);">
+        <svg width="340" height="140" viewBox="0 0 340 140">
+          <!-- Inline lockup -->
+          <circle cx="45" cy="70" r="28" fill="none" stroke="#3A5940" stroke-width="1"/>
+          <text x="45" y="76" font-family="Cormorant Garamond, serif" font-size="22" font-weight="600" fill="#3A5940" text-anchor="middle" letter-spacing="2">TMP</text>
+          <!-- Text -->
+          <text x="90" y="60" font-family="Cormorant Garamond, serif" font-size="22" font-weight="600" fill="#2C3135" letter-spacing="1">Triumph</text>
+          <text x="90" y="80" font-family="Outfit, sans-serif" font-size="9" font-weight="500" fill="#7B9E7F" letter-spacing="3">MANAGED PROGRAM</text>
+          <line x1="90" y1="90" x2="260" y2="90" stroke="#C4A55A" stroke-width="0.4" opacity="0.4"/>
+          <text x="90" y="104" font-family="DM Sans, sans-serif" font-size="7.5" fill="#999" letter-spacing="1">TRIUMPH CAPITAL MANAGEMENT</text>
+        </svg>
+        <div class="logo-label" style="color: rgba(0,0,0,0.3);">Horizontal — Light</div>
+      </div>
+    </div>
+
+    <!-- Palette -->
+    <div class="palette-card">
+      <h4>Color Palette</h4>
+      <div class="palette-row">
+        <div class="swatch" style="background: #1C2024;"><div class="swatch-label">#1C2024<br>Warm Charcoal</div></div>
+        <div class="swatch" style="background: #3A5940;"><div class="swatch-label">#3A5940<br>Forest</div></div>
+        <div class="swatch" style="background: #7B9E7F;"><div class="swatch-label">#7B9E7F<br>Sage</div></div>
+        <div class="swatch" style="background: #C4A55A;"><div class="swatch-label">#C4A55A<br>Gold Thread</div></div>
+        <div class="swatch" style="background: #F4F1EC;"><div class="swatch-label">#F4F1EC<br>Linen</div></div>
+      </div>
+      <div class="palette-notes">
+        Sage green signifies growth and stability — core to what a managed program delivers. The muted gold thread creates a subtle connection back to the parent Triumph brand without duplicating it. Together, the palette feels distinctly different yet harmonious, like a family member who has their own style.
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="type-card">
+      <h4>Typography</h4>
+      <div class="type-sample">
+        <div class="role">Display / Headings</div>
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: #fff; letter-spacing: 1px;">Cormorant Garamond</div>
+      </div>
+      <div class="type-sample">
+        <div class="role">UI / Labels</div>
+        <div style="font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: #7B9E7F;">Outfit — Tracked Labels</div>
+      </div>
+      <div class="type-sample">
+        <div class="role">Body / Data</div>
+        <div style="font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--text-muted);">DM Sans — Shared across platforms</div>
+      </div>
+    </div>
+
+    <!-- Portal Mockup -->
+    <div class="mockup-card">
+      <div class="mockup-bar">
+        <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+      </div>
+      <div class="mockup-content" style="background: linear-gradient(180deg, #1C2024 0%, #22272C 100%); color: #E8E2D6;">
+        <div class="mock-nav" style="border-bottom: 1px solid rgba(123,158,127,0.12);">
+          <div class="mock-nav-brand">
+            <svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12" fill="none" stroke="#7B9E7F" stroke-width="0.8"/><text x="14" y="17" font-family="Cormorant Garamond" font-size="10" fill="#7B9E7F" text-anchor="middle" font-weight="600" letter-spacing="1">TMP</text></svg>
+            <span style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 16px; letter-spacing: 1px;">Triumph <span style="color: #7B9E7F; font-family: 'Outfit', sans-serif; font-size: 9px; letter-spacing: 3px; vertical-align: middle;">MANAGED</span></span>
+          </div>
+          <div class="mock-nav-links" style="font-family: 'Outfit', sans-serif; font-size: 11px; letter-spacing: 1px;">
+            <span style="opacity: 1; color: #7B9E7F;">Dashboard</span>
+            <span>Models</span>
+            <span>Accounts</span>
+            <span>Reporting</span>
+          </div>
+        </div>
+        <div class="mock-hero">
+          <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 24px; color: #E8E2D6; letter-spacing: 0.5px;">Managed Program Dashboard</h2>
+          <p style="color: rgba(232,226,214,0.4); font-family: 'DM Sans', sans-serif;">Model enrollment overview and performance metrics</p>
+        </div>
+        <div class="mock-cards-row">
+          <div class="mock-stat-card" style="background: rgba(123,158,127,0.06); border: 1px solid rgba(123,158,127,0.12); color: #E8E2D6;">
+            <div class="num" style="color: #7B9E7F; font-family: 'Cormorant Garamond', serif; font-size: 26px;">47</div>
+            <div class="label" style="font-family: 'Outfit', sans-serif;">Enrolled</div>
+          </div>
+          <div class="mock-stat-card" style="background: rgba(123,158,127,0.06); border: 1px solid rgba(123,158,127,0.12); color: #E8E2D6;">
+            <div class="num" style="color: #C4A55A; font-family: 'Cormorant Garamond', serif; font-size: 26px;">$12.4M</div>
+            <div class="label" style="font-family: 'Outfit', sans-serif;">AUM</div>
+          </div>
+          <div class="mock-stat-card" style="background: rgba(123,158,127,0.06); border: 1px solid rgba(123,158,127,0.12); color: #E8E2D6;">
+            <div class="num" style="color: #7B9E7F; font-family: 'Cormorant Garamond', serif; font-size: 26px;">6</div>
+            <div class="label" style="font-family: 'Outfit', sans-serif;">Models</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept-notes">
+    <h4>Design Rationale</h4>
+    <p>This concept uses the "TMP" monogram as the anchor — a clean abbreviation that advisors will naturally adopt. The laurel motif (on the stacked version) subtly references the "Triumph" name and its classical victory associations. Sage green is a departure from the parent brand's blue/gold but maintains a financial-services sensibility while feeling fresh and distinct. The gold thread accent provides just enough visual DNA to connect it back to Triumph Capital Management.</p>
+  </div>
+</div>
+
+<!-- ===================== RECOMMENDATION ===================== -->
+<div class="recommendation">
+  <div class="concept-number">Summary</div>
+  <div class="divider-line"></div>
+  <h3>Choosing the Right Direction</h3>
+  <p style="margin-bottom: 16px;">
+    <strong style="color: #fff;">Concept 1 (Heritage Elevated)</strong> is the safest bet if you want advisors to immediately feel "this is Triumph." The shield + bronze palette creates a premium sub-brand that lives comfortably next to the main site. Best for a traditional advisor audience.
+  </p>
+  <p style="margin-bottom: 16px;">
+    <strong style="color: #fff;">Concept 2 (Modern Authority)</strong> is the pick if you want the portal to feel like a modern platform first and foremost — think Black Diamond, Orion, or Riskalyze in terms of UI energy. The teal + charcoal palette signals tech sophistication. Best if the portal will be data-heavy with analytics features.
+  </p>
+  <p>
+    <strong style="color: #fff;">Concept 3 (Refined Distinction)</strong> splits the difference — it's clearly related to Triumph through the gold thread and serif typography, but the sage green gives it a unique personality. The TMP monogram is practical and brandable. Best for creating something that feels like a true standalone brand within the Triumph family.
+  </p>
+</div>
+
+</body>
+</html>

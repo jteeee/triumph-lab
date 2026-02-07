@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triumph Managed Program — TC Monogram Integration</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0C0E12;
+    --surface: #14161C;
+    --surface2: #1C1F28;
+    --border: #2A2D38;
+    --text: #E8E6E3;
+    --text-muted: #8B8D94;
+    --accent: #C9A84C;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .header {
+    padding: 60px 48px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .header p {
+    color: var(--text-muted);
+    font-size: 15px;
+    max-width: 680px;
+    line-height: 1.7;
+  }
+
+  .concept-section {
+    padding: 56px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .concept-number {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+  .concept-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #fff;
+  }
+  .concept-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    max-width: 640px;
+  }
+
+  /* LOGO GRID */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  .logo-cell {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+  .logo-display {
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .logo-label {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-family: 'Outfit', sans-serif;
+  }
+  .logo-label-dark { color: rgba(255,255,255,0.4); }
+  .logo-label-light { color: rgba(0,0,0,0.25); }
+
+  /* FULL WIDTH BANNER */
+  .banner-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+  }
+  .banner-bar {
+    height: 32px;
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 5px;
+  }
+  .banner-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+
+  /* NOTES */
+  .concept-notes {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 24px 28px;
+    border: 1px solid var(--border);
+    margin-top: 20px;
+  }
+  .concept-notes h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .concept-notes p {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  /* COMPARISON SECTION */
+  .comparison {
+    padding: 56px 48px;
+    background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+  }
+  .comparison h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .comp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 24px;
+  }
+  .comp-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .comp-card-logo {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .comp-card-body {
+    padding: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .comp-card-body h5 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+  .comp-card-body p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .divider-line {
+    width: 48px;
+    height: 2px;
+    background: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  /* NAV MOCKUP STYLES */
+  .mock-nav {
+    display: flex;
+    align-items: center;
+    padding: 14px 28px;
+    justify-content: space-between;
+  }
+  .mock-nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .mock-nav-links {
+    display: flex;
+    gap: 20px;
+    font-size: 12px;
+  }
+  .mock-nav-links span { opacity: 0.45; }
+  .mock-hero {
+    padding: 36px 28px 28px;
+    text-align: center;
+  }
+  .mock-hero h2 { font-size: 22px; font-weight: 500; margin-bottom: 6px; }
+  .mock-hero p { font-size: 12px; opacity: 0.4; }
+  .mock-cards-row {
+    display: flex;
+    gap: 14px;
+    padding: 0 28px 28px;
+    justify-content: center;
+  }
+  .mock-stat-card {
+    flex: 1;
+    max-width: 180px;
+    padding: 18px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .mock-stat-card .num { font-size: 20px; font-weight: 700; margin-bottom: 3px; }
+  .mock-stat-card .label { font-size: 10px; opacity: 0.45; text-transform: uppercase; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-label">TC Monogram Integration</div>
+  <h1>Triumph Managed Program</h1>
+  <p>Incorporating the existing TC script mark into each concept direction. The TC stays recognizable but gets a fresh color treatment and framing to signal "this is the managed program, not the main brand."</p>
+</div>
+
+<!-- ===================== CONCEPT 1: HERITAGE ELEVATED ===================== -->
+<div class="concept-section">
+  <div class="concept-number">Concept 01 — Heritage Elevated</div>
+  <div class="concept-title">TC in Shield + Bronze Treatment</div>
+  <div class="concept-subtitle">The script TC sits inside the shield mark, rendered in bronze instead of the original silver/gray. The shield replaces the circular chrome bezel — same DNA, new frame.</div>
+
+  <div class="logo-grid">
+    <!-- Shield + TC on dark -->
+    <div class="logo-cell">
+      <div class="logo-display" style="background: linear-gradient(135deg, #0B1628 0%, #132240 60%, #0E1A33 100%);">
+        <svg width="160" height="200" viewBox="0 0 160 200">
+          <!-- Shield -->
+          <defs>
+            <linearGradient id="shield1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#C4955A" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#8B6B3A" stop-opacity="0.7"/>
+            </linearGradient>
+            <linearGradient id="shieldFill1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#0F1E38" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#162A4A" stop-opacity="1"/>
+            </linearGradient>
+          </defs>
+          <path d="M80 15 L145 42 L145 105 Q145 155 80 178 Q15 155 15 105 L15 42 Z" fill="url(#shieldFill1)" stroke="url(#shield1)" stroke-width="1.8"/>
+          <path d="M80 25 L138 49 L138 103 Q138 148 80 168 Q22 148 22 103 L22 49 Z" fill="none" stroke="#C4955A" stroke-width="0.4" opacity="0.25"/>
+          <!-- TC Script in bronze -->
+          <text x="80" y="105" font-family="Playfair Display, serif" font-style="italic" font-size="56" font-weight="500" fill="#C4955A" text-anchor="middle" dominant-baseline="middle" opacity="0.95">TC</text>
+          <!-- MANAGED text -->
+          <text x="80" y="145" font-family="Outfit, sans-serif" font-size="8" font-weight="500" fill="#C4955A" text-anchor="middle" letter-spacing="4" opacity="0.6">MANAGED</text>
+        </svg>
+        <div class="logo-label logo-label-dark">Shield Mark — Dark</div>
+      </div>
+    </div>
+
+    <!-- Shield + TC on light -->
+    <div class="logo-cell">
+      <div class="logo-display" style="background: linear-gradient(135deg, #F5F2ED 0%, #EDE8E0 100%);">
+        <svg width="160" height="200" viewBox="0 0 160 200">
+          <defs>
+            <linearGradient id="shield1L" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1A2744"/>
+              <stop offset="100%" stop-color="#1A2744" stop-opacity="0.7"/>
+            </linearGradient>
+          </defs>
+          <path d="M80 15 L145 42 L145 105 Q145 155 80 178 Q15 155 15 105 L15 42 Z" fill="#F0ECE4" stroke="url(#shield1L)" stroke-width="1.5"/>
+          <path d="M80 25 L138 49 L138 103 Q138 148 80 168 Q22 148 22 103 L22 49 Z" fill="none" stroke="#1A2744" stroke-width="0.3" opacity="0.15"/>
+          <text x="80" y="105" font-family="Playfair Display, serif" font-style="italic" font-size="56" font-weight="500" fill="#1A2744" text-anchor="middle" dominant-baseline="middle">TC</text>
+          <text x="80" y="145" font-family="Outfit, sans-serif" font-size="8" font-weight="500" fill="#8C7444" text-anchor="middle" letter-spacing="4" opacity="0.7">MANAGED</text>
+        </svg>
+        <div class="logo-label logo-label-light">Shield Mark — Light</div>
+      </div>
+    </div>
+
+    <!-- Horizontal lockup -->
+    <div class="logo-cell">
+      <div class="logo-display" style="background: linear-gradient(135deg, #0B1628 0%, #132240 100%);">
+        <svg width="260" height="100" viewBox="0 0 260 100">
+          <!-- Small shield -->
+          <path d="M30 12 L56 22 L56 48 Q56 68 30 76 Q4 68 4 48 L4 22 Z" fill="#0F1E38" stroke="#C4955A" stroke-width="1.2"/>
+          <text x="30" y="48" font-family="Playfair Display, serif" font-style="italic" font-size="24" font-weight="500" fill="#C4955A" text-anchor="middle" dominant-baseline="middle">TC</text>
+          <!-- Text -->
+          <text x="74" y="38" font-family="Playfair Display, serif" font-size="18" font-weight="500" fill="#E8DCC8">Triumph</text>
+          <text x="74" y="55" font-family="Outfit, sans-serif" font-size="9" font-weight="500" fill="#C4955A" letter-spacing="3">MANAGED PROGRAM</text>
+          <line x1="74" y1="64" x2="230" y2="64" stroke="#C4955A" stroke-width="0.3" opacity="0.3"/>
+          <text x="74" y="76" font-family="DM Sans, sans-serif" font-size="7" fill="rgba(232,220,200,0.35)" letter-spacing="1">CAPITAL MANAGEMENT</text>
+        </svg>
+        <div class="logo-label logo-label-dark">Horizontal Lockup</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portal mockup -->
+  <div class="banner-card">
+    <div class="banner-bar"><div class="banner-dot"></div><div class="banner-dot"></div><div class="banner-dot"></div></div>
+    <div style="background: linear-gradient(180deg, #0B1628 0%, #111D35 100%); color: #E8DCC8;">
+      <div class="mock-nav" style="border-bottom: 1px solid rgba(196,149,90,0.12);">
+        <div class="mock-nav-brand">
+          <svg width="26" height="32" viewBox="0 0 26 32"><path d="M13 2 L24 8 L24 20 Q24 28 13 31 Q2 28 2 20 L2 8 Z" fill="#0F1E38" stroke="#C4955A" stroke-width="0.8"/><text x="13" y="18" font-family="Playfair Display" font-style="italic" font-size="12" fill="#C4955A" text-anchor="middle" font-weight="500">TC</text></svg>
+          <span style="font-family: 'Playfair Display', serif; font-weight: 500; font-size: 15px; color: #E8DCC8;">Triumph <span style="color: #C4955A; font-family: 'Outfit', sans-serif; font-size: 9px; letter-spacing: 2.5px; vertical-align: 1px;">MANAGED</span></span>
+        </div>
+        <div class="mock-nav-links" style="color: #E8DCC8; font-family: 'DM Sans', sans-serif;">
+          <span style="opacity: 1; color: #C4955A;">Dashboard</span><span>Models</span><span>Accounts</span><span>Reports</span>
+        </div>
+      </div>
+      <div class="mock-hero">
+        <h2 style="font-family: 'Playfair Display', serif; color: #E8DCC8;">Welcome back, Advisor</h2>
+        <p style="color: rgba(232,220,200,0.4);">Your managed models at a glance</p>
+      </div>
+      <div class="mock-cards-row">
+        <div class="mock-stat-card" style="background: rgba(196,149,90,0.06); border: 1px solid rgba(196,149,90,0.12); color: #E8DCC8;">
+          <div class="num" style="color: #C4955A;">47</div><div class="label">Enrolled</div>
+        </div>
+        <div class="mock-stat-card" style="background: rgba(196,149,90,0.06); border: 1px solid rgba(196,149,90,0.12); color: #E8DCC8;">
+          <div class="num" style="color: #C4955A;">$12.4M</div><div class="label">Total AUM</div>
+        </div>
+        <div class="mock-stat-card" style="background: rgba(196,149,90,0.06); border: 1px solid rgba(196,149,90,0.12); color: #E8DCC8;">
+          <div class="num" style="color: #C4955A;">6</div><div class="label">Active Models</div>
+        </div>
+        <div class="mock-stat-card" style="background: rgba(196,149,90,0.06); border: 1px solid rgba(196,149,90,0.12); color: #E8DCC8;">
+          <div class="num" style="color: #C4955A;">+9.1%</div><div class="label">YTD Return</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept-notes">
+    <h4>How the TC Works Here</h4>
+    <p>The original logo uses TC in a chrome/silver circular bezel. This version drops the chrome circle for a shield frame and shifts the TC from silver to bronze — same script, completely different energy. The shield gives it an institutional, crest-like quality that says "managed program" without needing to spell it all out. The TC remains the hero, so anyone who knows the Triumph brand instantly recognizes it.</p>
+  </div>
+</div>
+
+<!-- ===================== CONCEPT 2: MODERN AUTHORITY ===================== -->
+<div class="concept-section">
+  <div class="concept-number">Concept 02 — Modern Authority</div>
+  <div class="concept-title">TC in Circle + Teal Treatment</div>
+  <div class="concept-subtitle">Keeps the circular frame from the original logo but strips the chrome bevel for a clean, modern ring. TC rendered in teal on dark or deep teal on light — a tech-forward remix.</div>
+
+  <div class="logo-grid">
+    <!-- Circle + TC on dark -->
+    <div class="logo-cell">
+      <div class="logo-display" style="background: linear-gradient(135deg, #141719 0%, #1A1E22 60%, #111416 100%);">
+        <svg width="160" height="200" viewBox="0 0 160 200">
+          <defs>
+            <linearGradient id="ring2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#4FA8B5"/>
+              <stop offset="100%" stop-color="#3A8A96"/>
+            </linearGradient>
+          </defs>
+          <!-- Outer ring -->
+          <circle cx="80" cy="85" r="55" fill="none" stroke="url(#ring2)" stroke-width="1.5"/>
+          <!-- Inner subtle ring -->
+          <circle cx="80" cy="85" r="48" fill="none" stroke="#4FA8B5" stroke-width="0.3" opacity="0.2"/>
+          <!-- TC -->
+          <text x="80" y="95" font-family="Playfair Display, serif" font-style="italic" font-size="48" font-weight="500" fill="#4FA8B5" text-anchor="middle" dominant-baseline="middle">TC</text>
+          <!-- MANAGED text below circle -->
+          <text x="80" y="160" font-family="Sora, sans-serif" font-size="9" font-weight="500" fill="#4FA8B5" text-anchor="middle" letter-spacing="4" opacity="0.6">MANAGED</text>
+        </svg>
+        <div class="logo-label logo-label-dark">Circle Mark — Dark</div>
+      </div>
+    </div>
+
+    <!-- Circle + TC on light -->
+    <div class="logo-cell">
+      <div class="logo-display" style="background: linear-gradient(135deg, #F7F8FA 0%, #EEF0F3 100%);">
+        <svg width="160" height="200" viewBox="0 0 160 200">
+          <circle cx="80" cy="85" r="55" fill="none" stroke="#2A7A86" stroke-width="1.5"/>
+          <circle cx="80" cy="85" r="48" fill="none" stroke="#2A7A86" stroke-width="0.3" opacity="0.15"/>
+          <text x="80" y="95" font-family="Playfair Display, serif" font-style="italic" font-size="48" font-weight="500" fill="#1A1E22" text-anchor="middle" dominant-baseline="middle">TC</text>
+          <text x="80" y="160" font-family="Sora, sans-serif" font-size="9" font-weight="500" fill="#2A7A86" text-anchor="middle" letter-spacing="4" opacity="0.6">MANAGED</text>
+        </svg>
+        <div class="logo-label logo-label-light">Circle Mark — Light</div>
+      </div>
+    </div>
+
+    <!-- Horizontal lockup with peak -->
+    <div class="logo-cell">
+      <div class="logo-display" style="background: linear-gradient(135deg, #141719 0%, #1A1E22 100%);">
+        <svg width="280" height="100" viewBox="0 0 280 100">
+          <!-- Small circle with TC -->
+          <circle cx="28" cy="46" r="22" fill="none" stroke="#4FA8B5" stroke-width="1"/>
+          <text x="28" y="50" font-family="Playfair Display, serif" font-style="italic" font-size="20" font-weight="500" fill="#4FA8B5" text-anchor="middle" dominant-baseline="middle">TC</text>
+          <!-- Peak accent -->
+          <path d="M64 56 L74 32 L84 56" fill="none" stroke="#4FA8B5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+          <!-- Text -->
+          <text x="98" y="40" font-family="Sora, sans-serif" font-size="16" font-weight="600" fill="#E2E5E8" letter-spacing="1">TRIUMPH</text>
+          <text x="98" y="56" font-family="Sora, sans-serif" font-size="8" font-weight="400" fill="#4FA8B5" letter-spacing="3.5">MANAGED PROGRAM</text>
+          <text x="98" y="72" font-family="DM Sans, sans-serif" font-size="7" fill="rgba(226,229,232,0.3)" letter-spacing="1">BY TRIUMPH CAPITAL MANAGEMENT</text>
+        </svg>
+        <div class="logo-label logo-label-dark">Horizontal + Peak Accent</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portal mockup -->
+  <div class="banner-card">
+    <div class="banner-bar"><div class="banner-dot"></div><div class="banner-dot"></div><div class="banner-dot"></div></div>
+    <div style="background: #141719; color: #E2E5E8;">
+      <div class="mock-nav" style="border-bottom: 1px solid rgba(79,168,181,0.1);">
+        <div class="mock-nav-brand">
+          <svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12" fill="none" stroke="#4FA8B5" stroke-width="0.8"/><text x="14" y="16" font-family="Playfair Display" font-style="italic" font-size="12" fill="#4FA8B5" text-anchor="middle" font-weight="500">TC</text></svg>
+          <span style="font-family: 'Sora', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 1px;">TRIUMPH <span style="color: #4FA8B5; font-weight: 400;">MANAGED</span></span>
+        </div>
+        <div class="mock-nav-links" style="color: #E2E5E8; font-family: 'Sora', sans-serif; font-size: 11px;">
+          <span style="opacity: 1; color: #4FA8B5;">Dashboard</span><span>Models</span><span>Accounts</span><span>Analytics</span>
+        </div>
+      </div>
+      <div class="mock-hero">
+        <h2 style="font-family: 'Sora', sans-serif; font-weight: 600; color: #E2E5E8;">Model Performance Overview</h2>
+        <p style="color: rgba(226,229,232,0.35); font-family: 'DM Sans';">Real-time intelligence across enrolled accounts</p>
+      </div>
+      <div class="mock-cards-row">
+        <div class="mock-stat-card" style="background: rgba(79,168,181,0.05); border: 1px solid rgba(79,168,181,0.1); color: #E2E5E8;">
+          <div class="num" style="color: #4FA8B5; font-family: 'Sora';">47</div><div class="label" style="font-family: 'DM Sans';">Enrolled</div>
+        </div>
+        <div class="mock-stat-card" style="background: rgba(79,168,181,0.05); border: 1px solid rgba(79,168,181,0.1); color: #E2E5E8;">
+          <div class="num" style="color: #4FA8B5; font-family: 'Sora';">$12.4M</div><div class="label" style="font-family: 'DM Sans';">AUM</div>
+        </div>
+        <div class="mock-stat-card" style="background: rgba(79,168,181,0.05); border: 1px solid rgba(79,168,181,0.1); color: #E2E5E8;">
+          <div class="num" style="color: #4FA8B5; font-family: 'Sora';">+8.2%</div><div class="label" style="font-family: 'DM Sans';">YTD</div>
+        </div>
+        <div class="mock-stat-card" style="background: rgba(79,168,181,0.05); border: 1px solid rgba(79,168,181,0.1); color: #E2E5E8;">
+          <div class="num" style="color: #4FA8B5; font-family: 'Sora';">6</div><div class="label" style="font-family: 'DM Sans';">Models</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept-notes">
+    <h4>How the TC Works Here</h4>
+    <p>This is the most natural fit for the TC — the original logo already uses a circle, so we're essentially modernizing the bezel. Strip the chrome/3D effect, make it a clean single-weight ring, and recolor the TC in teal. The italic Playfair "TC" script inside a geometric circle creates a nice tension between classic and modern. The small peak accent in the horizontal lockup adds the "growth" symbolism without overwhelming the TC mark.</p>
+  </div>
+</div>
+
+<!-- ===================== CONCEPT 3: REFINED DISTINCTION ===================== -->
+<div class="concept-section">
+  <div class="concept-number">Concept 03 — Refined Distinction</div>
+  <div class="concept-title">TC in Laurel Ring + Sage/Gold Treatment</div>
+  <div class="concept-subtitle">The TC sits inside a circle framed by subtle laurel elements, combining the original circular format with the "Triumph" victory motif. Sage green TC with gold accents.</div>
+
+  <div class="logo-grid">
+    <!-- Laurel circle + TC on dark -->
+    <div class="logo-cell">
+      <div class="logo-display" style="background: linear-gradient(135deg, #1C2024 0%, #252A30 60%, #1A1F23 100%);">
+        <svg width="180" height="210" viewBox="0 0 180 210">
+          <!-- Outer circle -->
+          <circle cx="90" cy="88" r="58" fill="none" stroke="#7B9E7F" stroke-width="0.8" opacity="0.5"/>
+          <!-- Laurel left -->
+          <path d="M42 120 Q30 100 34 82 Q30 64 40 48" fill="none" stroke="#7B9E7F" stroke-width="1" opacity="0.5"/>
+          <ellipse cx="36" cy="60" rx="5" ry="10" fill="none" stroke="#7B9E7F" stroke-width="0.5" opacity="0.3" transform="rotate(-20 36 60)"/>
+          <ellipse cx="32" cy="78" rx="5" ry="10" fill="none" stroke="#7B9E7F" stroke-width="0.5" opacity="0.3" transform="rotate(-10 32 78)"/>
+          <ellipse cx="33" cy="96" rx="5" ry="10" fill="none" stroke="#7B9E7F" stroke-width="0.5" opacity="0.3" transform="rotate(5 33 96)"/>
+          <ellipse cx="37" cy="112" rx="5" ry="10" fill="none" stroke="#7B9E7F" stroke-width="0.5" opacity="0.3" transform="rotate(15 37 112)"/>
+          <!-- Laurel right -->
+          <path d="M138 120 Q150 100 146 82 Q150 64 140 48" fill="none" stroke="#7B9E7F" stroke-width="1" opacity="0.5"/>
+          <ellipse cx="144" cy="60" rx="5" ry="10" fill="none" stroke="#7B9E7F" stroke-width="0.5" opacity="0.3" transform="rotate(20 144 60)"/>
+          <ellipse cx="148" cy="78" rx="5" ry="10" fill="none" stroke="#7B9E7F" stroke-width="0.5" opacity="0.3" transform="rotate(10 148 78)"/>
+          <ellipse cx="147" cy="96" rx="5" ry="10" fill="none" stroke="#7B9E7F" stroke-width="0.5" opacity="0.3" transform="rotate(-5 147 96)"/>
+          <ellipse cx="143" cy="112" rx="5" ry="10" fill="none" stroke="#7B9E7F" stroke-width="0.5" opacity="0.3" transform="rotate(-15 143 112)"/>
+          <!-- TC -->
+          <text x="90" y="98" font-family="Cormorant Garamond, serif" font-style="italic" font-size="52" font-weight="600" fill="#7B9E7F" text-anchor="middle" dominant-baseline="middle">TC</text>
+          <!-- Gold line -->
+          <line x1="65" y1="125" x2="115" y2="125" stroke="#C4A55A" stroke-width="0.5" opacity="0.5"/>
+          <!-- MANAGED -->
+          <text x="90" y="162" font-family="Outfit, sans-serif" font-size="8" font-weight="500" fill="#7B9E7F" text-anchor="middle" letter-spacing="4" opacity="0.6">MANAGED</text>
+          <text x="90" y="178" font-family="Outfit, sans-serif" font-size="6.5" font-weight="400" fill="#C4A55A" text-anchor="middle" letter-spacing="2" opacity="0.35">PROGRAM</text>
+        </svg>
+        <div class="logo-label logo-label-dark">Laurel Mark — Dark</div>
+      </div>
+    </div>
+
+    <!-- Simple circle + TC on light -->
+    <div class="logo-cell">
+      <div class="logo-display" style="background: linear-gradient(135deg, #F4F1EC 0%, #EBE7DF 100%);">
+        <svg width="160" height="200" viewBox="0 0 160 200">
+          <circle cx="80" cy="85" r="52" fill="none" stroke="#3A5940" stroke-width="1"/>
+          <circle cx="80" cy="85" r="46" fill="none" stroke="#3A5940" stroke-width="0.3" opacity="0.15"/>
+          <text x="80" y="95" font-family="Cormorant Garamond, serif" font-style="italic" font-size="48" font-weight="600" fill="#3A5940" text-anchor="middle" dominant-baseline="middle">TC</text>
+          <line x1="55" y1="118" x2="105" y2="118" stroke="#C4A55A" stroke-width="0.5" opacity="0.4"/>
+          <text x="80" y="155" font-family="Outfit, sans-serif" font-size="8" font-weight="500" fill="#3A5940" text-anchor="middle" letter-spacing="4" opacity="0.6">MANAGED</text>
+        </svg>
+        <div class="logo-label logo-label-light">Clean Circle — Light</div>
+      </div>
+    </div>
+
+    <!-- Horizontal lockup -->
+    <div class="logo-cell">
+      <div class="logo-display" style="background: linear-gradient(135deg, #1C2024 0%, #252A30 100%);">
+        <svg width="280" height="100" viewBox="0 0 280 100">
+          <!-- Small circle with TC -->
+          <circle cx="32" cy="46" r="24" fill="none" stroke="#7B9E7F" stroke-width="0.8"/>
+          <text x="32" y="50" font-family="Cormorant Garamond, serif" font-style="italic" font-size="22" font-weight="600" fill="#7B9E7F" text-anchor="middle" dominant-baseline="middle">TC</text>
+          <!-- Text -->
+          <text x="72" y="38" font-family="Cormorant Garamond, serif" font-size="20" font-weight="600" fill="#E8E2D6" letter-spacing="0.5">Triumph</text>
+          <text x="72" y="56" font-family="Outfit, sans-serif" font-size="9" font-weight="500" fill="#7B9E7F" letter-spacing="3">MANAGED PROGRAM</text>
+          <line x1="72" y1="65" x2="240" y2="65" stroke="#C4A55A" stroke-width="0.3" opacity="0.35"/>
+          <text x="72" y="78" font-family="DM Sans, sans-serif" font-size="7" fill="rgba(232,226,214,0.3)" letter-spacing="1">TRIUMPH CAPITAL MANAGEMENT</text>
+        </svg>
+        <div class="logo-label logo-label-dark">Horizontal Lockup</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portal mockup -->
+  <div class="banner-card">
+    <div class="banner-bar"><div class="banner-dot"></div><div class="banner-dot"></div><div class="banner-dot"></div></div>
+    <div style="background: linear-gradient(180deg, #1C2024 0%, #22272C 100%); color: #E8E2D6;">
+      <div class="mock-nav" style="border-bottom: 1px solid rgba(123,158,127,0.1);">
+        <div class="mock-nav-brand">
+          <svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="12" fill="none" stroke="#7B9E7F" stroke-width="0.7"/><text x="14" y="16" font-family="Cormorant Garamond" font-style="italic" font-size="12" fill="#7B9E7F" text-anchor="middle" font-weight="600">TC</text></svg>
+          <span style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 15px; letter-spacing: 0.5px;">Triumph <span style="color: #7B9E7F; font-family: 'Outfit', sans-serif; font-size: 9px; letter-spacing: 2.5px; vertical-align: 1px;">MANAGED</span></span>
+        </div>
+        <div class="mock-nav-links" style="color: #E8E2D6; font-family: 'Outfit', sans-serif; font-size: 11px; letter-spacing: 0.5px;">
+          <span style="opacity: 1; color: #7B9E7F;">Dashboard</span><span>Models</span><span>Accounts</span><span>Reporting</span>
+        </div>
+      </div>
+      <div class="mock-hero">
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 22px; letter-spacing: 0.5px;">Managed Program Dashboard</h2>
+        <p style="color: rgba(232,226,214,0.35); font-family: 'DM Sans';">Model enrollment and performance overview</p>
+      </div>
+      <div class="mock-cards-row">
+        <div class="mock-stat-card" style="background: rgba(123,158,127,0.05); border: 1px solid rgba(123,158,127,0.1); color: #E8E2D6;">
+          <div class="num" style="color: #7B9E7F; font-family: 'Cormorant Garamond'; font-size: 24px;">47</div><div class="label" style="font-family: 'Outfit';">Enrolled</div>
+        </div>
+        <div class="mock-stat-card" style="background: rgba(123,158,127,0.05); border: 1px solid rgba(123,158,127,0.1); color: #E8E2D6;">
+          <div class="num" style="color: #C4A55A; font-family: 'Cormorant Garamond'; font-size: 24px;">$12.4M</div><div class="label" style="font-family: 'Outfit';">AUM</div>
+        </div>
+        <div class="mock-stat-card" style="background: rgba(123,158,127,0.05); border: 1px solid rgba(123,158,127,0.1); color: #E8E2D6;">
+          <div class="num" style="color: #7B9E7F; font-family: 'Cormorant Garamond'; font-size: 24px;">+9.1%</div><div class="label" style="font-family: 'Outfit';">YTD</div>
+        </div>
+        <div class="mock-stat-card" style="background: rgba(123,158,127,0.05); border: 1px solid rgba(123,158,127,0.1); color: #E8E2D6;">
+          <div class="num" style="color: #7B9E7F; font-family: 'Cormorant Garamond'; font-size: 24px;">6</div><div class="label" style="font-family: 'Outfit';">Models</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="concept-notes">
+    <h4>How the TC Works Here</h4>
+    <p>Cormorant Garamond gives the TC a slightly different serif character than the original — more editorial, less scripty — while keeping the italic elegance. The laurel wreath framing on the stacked version reinforces "Triumph" (victory/laurels) and the sage green positions growth and stability as the program's core promise. The gold thread accent is the through-line back to the parent brand. On the simplified versions, it's just TC in a clean circle — maximally simple, instantly recognizable.</p>
+  </div>
+</div>
+
+<!-- ===================== SIDE-BY-SIDE COMPARISON ===================== -->
+<div class="comparison">
+  <div class="concept-number">Quick Comparison</div>
+  <div class="divider-line"></div>
+  <h3>All Three with TC — At a Glance</h3>
+
+  <div class="comp-grid">
+    <div class="comp-card">
+      <div class="comp-card-logo" style="background: linear-gradient(135deg, #0B1628, #132240);">
+        <svg width="80" height="96" viewBox="0 0 80 96">
+          <path d="M40 6 L72 20 L72 52 Q72 76 40 86 Q8 76 8 52 L8 20 Z" fill="#0F1E38" stroke="#C4955A" stroke-width="1"/>
+          <text x="40" y="50" font-family="Playfair Display" font-style="italic" font-size="28" font-weight="500" fill="#C4955A" text-anchor="middle" dominant-baseline="middle">TC</text>
+        </svg>
+      </div>
+      <div class="comp-card-body">
+        <h5>Heritage Elevated</h5>
+        <p>Shield frame, bronze TC. Most connected to parent brand. Traditional, institutional feel. Best for: conservative advisor base that values continuity.</p>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-card-logo" style="background: linear-gradient(135deg, #141719, #1A1E22);">
+        <svg width="80" height="96" viewBox="0 0 80 96">
+          <circle cx="40" cy="44" r="32" fill="none" stroke="#4FA8B5" stroke-width="1"/>
+          <text x="40" y="48" font-family="Playfair Display" font-style="italic" font-size="28" font-weight="500" fill="#4FA8B5" text-anchor="middle" dominant-baseline="middle">TC</text>
+        </svg>
+      </div>
+      <div class="comp-card-body">
+        <h5>Modern Authority</h5>
+        <p>Clean circle, teal TC. Most natural evolution of original logo shape. Tech-forward, data-driven energy. Best for: a platform that will be heavily dashboard/analytics focused.</p>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-card-logo" style="background: linear-gradient(135deg, #1C2024, #252A30);">
+        <svg width="80" height="96" viewBox="0 0 80 96">
+          <circle cx="40" cy="44" r="32" fill="none" stroke="#7B9E7F" stroke-width="0.7"/>
+          <text x="40" y="48" font-family="Cormorant Garamond" font-style="italic" font-size="28" font-weight="600" fill="#7B9E7F" text-anchor="middle" dominant-baseline="middle">TC</text>
+        </svg>
+      </div>
+      <div class="comp-card-body">
+        <h5>Refined Distinction</h5>
+        <p>Circle + laurel option, sage TC with gold thread. Strongest standalone identity while maintaining connection. Best for: building a sub-brand advisors identify with as its own thing.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

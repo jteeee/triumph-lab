@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triumph Lab — Internal Decision Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F8F5F0;
+    --surface: #FFFFFF;
+    --border: #E5E0D8;
+    --border-light: #F0ECE4;
+    --navy: #1A2744;
+    --navy-light: #243358;
+    --navy-deep: #0F1E38;
+    --bronze: #C4955A;
+    --bronze-dark: #8C7444;
+    --bronze-glow: rgba(196,149,90,0.12);
+    --text: #1A2744;
+    --text-secondary: #8B7E6E;
+    --text-muted: #B0A899;
+    --cream: #E8DCC8;
+    --sidebar-w: 260px;
+    --sidebar-collapsed: 0px;
+    --green: #2E7D42;
+    --blue: #3B6FA0;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow-card: 0 1px 3px rgba(26,39,68,0.04), 0 4px 12px rgba(26,39,68,0.03);
+    --shadow-hover: 0 4px 16px rgba(26,39,68,0.08), 0 1px 4px rgba(26,39,68,0.04);
+    --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    line-height: 1.6;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: var(--sidebar-w);
+    background: var(--navy);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition);
+    overflow: hidden;
+  }
+  .sidebar.collapsed { transform: translateX(-100%); }
+
+  .sidebar-brand {
+    padding: 28px 24px 24px;
+    border-bottom: 1px solid rgba(196,149,90,0.1);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+  .sidebar-brand-text {
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar-brand-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+  }
+  .sidebar-brand-sub {
+    font-family: 'Outfit', sans-serif;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--bronze);
+    margin-top: 3px;
+  }
+
+  .sidebar-nav {
+    flex: 1;
+    padding: 16px 0;
+    overflow-y: auto;
+  }
+  .sidebar-section-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(232,220,200,0.25);
+    padding: 16px 24px 8px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 11px 24px;
+    cursor: pointer;
+    transition: all var(--transition);
+    border-left: 3px solid transparent;
+    font-size: 13.5px;
+    color: rgba(232,220,200,0.55);
+    font-weight: 400;
+    position: relative;
+    user-select: none;
+  }
+  .nav-item:hover {
+    color: rgba(232,220,200,0.85);
+    background: rgba(196,149,90,0.04);
+  }
+  .nav-item.active {
+    color: var(--cream);
+    border-left-color: var(--bronze);
+    background: rgba(196,149,90,0.08);
+    font-weight: 500;
+  }
+  .nav-item.active .nav-icon { color: var(--bronze); }
+  .nav-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+    color: rgba(232,220,200,0.35);
+    transition: color var(--transition);
+  }
+  .nav-item:hover .nav-icon { color: rgba(232,220,200,0.65); }
+  .nav-item .item-count {
+    margin-left: auto;
+    background: rgba(196,149,90,0.15);
+    color: var(--bronze);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .sidebar-footer {
+    padding: 18px 24px;
+    border-top: 1px solid rgba(196,149,90,0.08);
+    flex-shrink: 0;
+  }
+  .sidebar-footer-text {
+    font-size: 10px;
+    color: rgba(232,220,200,0.2);
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    margin-left: var(--sidebar-w);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: margin-left var(--transition);
+  }
+  body.sidebar-closed .main { margin-left: 0; }
+  body.sidebar-closed .sidebar { transform: translateX(-100%); }
+
+  .topbar {
+    height: 56px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 32px;
+    flex-shrink: 0;
+    gap: 16px;
+  }
+  .topbar-toggle {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition);
+    color: var(--text-secondary);
+    flex-shrink: 0;
+  }
+  .topbar-toggle:hover { background: var(--border-light); }
+  .topbar-toggle svg { width: 20px; height: 20px; }
+
+  .topbar-breadcrumb {
+    font-size: 13px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .topbar-breadcrumb .crumb-active {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .topbar-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .topbar-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--bronze-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--bronze);
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 36px 40px 60px;
+    scroll-behavior: smooth;
+  }
+
+  /* ── PAGE SECTIONS ── */
+  .page { display: none; animation: fadeUp 0.35s ease; }
+  .page.active { display: block; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .page-header { margin-bottom: 32px; }
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .page-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  /* ── STAT CARDS ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .stat-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
+    transition: box-shadow var(--transition), transform var(--transition);
+  }
+  .stat-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-1px);
+  }
+  .stat-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+  }
+  .stat-value {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1;
+  }
+  .stat-meta {
+    font-size: 12px;
+    color: var(--bronze-dark);
+    margin-top: 6px;
+  }
+
+  /* ── SECTION DIVIDERS ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    margin-top: 8px;
+  }
+  .section-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+  }
+  .section-link {
+    font-size: 12px;
+    color: var(--bronze-dark);
+    cursor: pointer;
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+  .section-link:hover { color: var(--bronze); }
+
+  /* ── DECISION CARDS ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 18px;
+    margin-bottom: 36px;
+  }
+
+  .decision-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
+    transition: box-shadow var(--transition), transform var(--transition);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .decision-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .card-top {
+    padding: 22px 24px 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .card-body { padding: 10px 24px 20px; flex: 1; }
+  .card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .card-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-top: 6px;
+  }
+
+  .status-badge {
+    font-family: 'Outfit', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .badge-review { background: rgba(196,149,90,0.12); color: var(--bronze); }
+  .badge-proposed { background: rgba(59,111,160,0.1); color: var(--blue); }
+  .badge-approved { background: rgba(46,125,66,0.08); color: var(--green); }
+  .badge-draft { background: rgba(139,126,110,0.1); color: var(--text-secondary); }
+
+  .card-footer {
+    padding: 14px 24px;
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .card-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .card-action {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--bronze);
+    background: var(--bronze-glow);
+    border: none;
+    padding: 7px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .card-action:hover {
+    background: rgba(196,149,90,0.2);
+    color: var(--bronze-dark);
+  }
+
+  /* ── VOTE CARD ── */
+  .vote-options {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .vote-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    transition: all var(--transition);
+    position: relative;
+  }
+  .vote-btn:hover {
+    border-color: var(--bronze);
+    background: var(--bronze-glow);
+    color: var(--bronze-dark);
+  }
+  .vote-btn.selected {
+    border-color: var(--bronze);
+    background: var(--bronze-glow);
+    color: var(--bronze-dark);
+    font-weight: 600;
+  }
+
+  /* ── ACTIVITY LIST ── */
+  .activity-list {
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-card);
+    overflow: hidden;
+    margin-bottom: 36px;
+  }
+  .activity-item {
+    padding: 16px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    border-bottom: 1px solid var(--border-light);
+    transition: background var(--transition);
+  }
+  .activity-item:last-child { border-bottom: none; }
+  .activity-item:hover { background: rgba(248,245,240,0.5); }
+  .activity-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+  .dot-bronze { background: var(--bronze); }
+  .dot-blue { background: var(--blue); }
+  .dot-green { background: var(--green); }
+  .activity-content { flex: 1; }
+  .activity-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.4;
+  }
+  .activity-sub {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+  }
+  .activity-time {
+    font-size: 11px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* ── EMPTY STATE ── */
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 40px;
+    text-align: center;
+  }
+  .empty-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: var(--text-muted);
+  }
+  .empty-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .empty-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    max-width: 400px;
+    line-height: 1.7;
+  }
+  .empty-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--border);
+    margin: 20px auto;
+    border-radius: 1px;
+  }
+
+  /* ── MODAL / OVERLAY ── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15,30,56,0.75);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-container {
+    width: 95vw;
+    height: 93vh;
+    background: var(--surface);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+    transform: scale(0.96) translateY(12px);
+    transition: transform 0.3s ease;
+  }
+  .modal-overlay.open .modal-container {
+    transform: scale(1) translateY(0);
+  }
+
+  .modal-topbar {
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    background: #FDFBF8;
+  }
+  .modal-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .modal-title .status-badge { font-size: 9px; }
+  .modal-close {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition);
+    color: var(--text-secondary);
+    border: none;
+    background: none;
+    font-size: 20px;
+  }
+  .modal-close:hover { background: var(--border-light); color: var(--text); }
+
+  .modal-body {
+    flex: 1;
+    overflow: hidden;
+  }
+  .modal-body iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    :root { --sidebar-w: 260px; }
+    .sidebar { transform: translateX(-100%); }
+    .sidebar.mobile-open { transform: translateX(0); }
+    .main { margin-left: 0 !important; }
+    .content { padding: 24px 20px 60px; }
+    .stats-row { grid-template-columns: 1fr; }
+  }
+
+  /* ── LOGIN GATE ── */
+  .login-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: linear-gradient(180deg, #0B1628 0%, #0E1A33 60%, #132240 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+  .login-gate.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .login-box {
+    text-align: center;
+    max-width: 340px;
+    width: 100%;
+    padding: 0 24px;
+  }
+  .login-box .login-flourish {
+    margin: 16px auto 6px;
+  }
+  .login-box .login-program {
+    font-family: 'Outfit', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--bronze);
+    margin-bottom: 36px;
+  }
+  .login-box .login-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--cream);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .login-input {
+    width: 100%;
+    padding: 13px 18px;
+    background: rgba(196,149,90,0.06);
+    border: 1px solid rgba(196,149,90,0.15);
+    border-radius: 8px;
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    outline: none;
+    margin-bottom: 14px;
+    transition: border-color 0.2s ease;
+  }
+  .login-input::placeholder { color: rgba(232,220,200,0.3); }
+  .login-input:focus { border-color: rgba(196,149,90,0.4); }
+  .login-btn {
+    width: 100%;
+    padding: 13px;
+    background: var(--bronze);
+    border: none;
+    border-radius: 8px;
+    color: #0B1628;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .login-btn:hover { background: #D4A86A; }
+  .login-error {
+    font-size: 12px;
+    color: #E07A5F;
+    margin-top: 12px;
+    height: 18px;
+    transition: opacity 0.2s ease;
+  }
+  .login-footer {
+    margin-top: 24px;
+    font-size: 11px;
+    color: rgba(232,220,200,0.2);
+  }
+
+  /* ── SCROLLBAR ── */
+  .content::-webkit-scrollbar,
+  .sidebar-nav::-webkit-scrollbar {
+    width: 5px;
+  }
+  .content::-webkit-scrollbar-track { background: transparent; }
+  .content::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+  }
+  .content::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+  .sidebar-nav::-webkit-scrollbar-track { background: transparent; }
+  .sidebar-nav::-webkit-scrollbar-thumb {
+    background: rgba(232,220,200,0.1);
+    border-radius: 3px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ LOGIN GATE ═══════════════ -->
+<div class="login-gate" id="loginGate">
+  <div class="login-box">
+    <svg width="72" height="86" viewBox="0 0 80 96" style="margin-bottom: 16px;">
+      <path d="M40 4 L72 18 L72 52 Q72 76 40 88 Q8 76 8 52 L8 18 Z" fill="#0F1E38" stroke="#C4955A" stroke-width="1"/>
+      <text x="40" y="50" font-family="Playfair Display" font-style="italic" font-size="30" fill="#C4955A" text-anchor="middle" font-weight="500">TC</text>
+      <path d="M28 64 Q34 68 40 64 Q46 60 52 64" fill="none" stroke="#C4955A" stroke-width="0.4" opacity="0.35"/>
+    </svg>
+    <div class="login-title">TRIUMPH</div>
+    <svg class="login-flourish" width="180" height="14" viewBox="0 0 200 16">
+      <path d="M30 8 Q50 4 70 8 Q85 12 100 8 Q115 4 130 8 Q150 12 170 8" fill="none" stroke="#C4955A" stroke-width="0.6" opacity="0.45"/>
+      <path d="M30 8 Q24 4 26 0" fill="none" stroke="#C4955A" stroke-width="0.4" opacity="0.3"/>
+      <path d="M170 8 Q176 4 174 0" fill="none" stroke="#C4955A" stroke-width="0.4" opacity="0.3"/>
+      <circle cx="100" cy="8" r="1" fill="#C4955A" opacity="0.4"/>
+    </svg>
+    <div class="login-program">LAB</div>
+    <form onsubmit="return handleLogin(event)">
+      <input class="login-input" type="text" id="loginUser" placeholder="Username" autocomplete="off" autofocus />
+      <input class="login-input" type="password" id="loginPass" placeholder="Password" />
+      <button class="login-btn" type="submit">SIGN IN</button>
+    </form>
+    <div class="login-error" id="loginError">&nbsp;</div>
+    <div class="login-footer">Triumph Capital Management</div>
+  </div>
+</div>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <svg width="36" height="42" viewBox="0 0 36 42" style="flex-shrink:0;">
+      <path d="M18 3 L33 10 L33 26 Q33 36 18 40 Q3 36 3 26 L3 10 Z" fill="#0F1E38" stroke="#C4955A" stroke-width="1"/>
+      <text x="18" y="23" font-family="Playfair Display" font-style="italic" font-size="15" fill="#C4955A" text-anchor="middle" dominant-baseline="middle" font-weight="500">TC</text>
+      <path d="M11 30 Q14.5 32.5 18 30 Q21.5 27.5 25 30" fill="none" stroke="#C4955A" stroke-width="0.4" opacity="0.35"/>
+    </svg>
+    <div class="sidebar-brand-text">
+      <div class="sidebar-brand-title">Triumph Lab</div>
+      <div class="sidebar-brand-sub">Decision Hub</div>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="sidebar-section-label">Navigation</div>
+
+    <div class="nav-item active" data-page="dashboard" onclick="showPage('dashboard')">
+      <div class="nav-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      Dashboard
+    </div>
+
+    <div class="sidebar-section-label" style="margin-top:8px;">Categories</div>
+
+    <div class="nav-item" data-page="brand" onclick="showPage('brand')">
+      <div class="nav-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="6.5" cy="13.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/><path d="M13.5 9v3.5L11 15"/><path d="M9 13.5h3.5L15 16"/></svg>
+      </div>
+      Brand & Design
+      <span class="item-count">4</span>
+    </div>
+
+    <div class="nav-item" data-page="portal" onclick="showPage('portal')">
+      <div class="nav-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      </div>
+      Portal & UX
+    </div>
+
+    <div class="nav-item" data-page="tech" onclick="showPage('tech')">
+      <div class="nav-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+      </div>
+      Tech & Integrations
+    </div>
+
+    <div class="nav-item" data-page="compliance" onclick="showPage('compliance')">
+      <div class="nav-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      </div>
+      Compliance & Ops
+    </div>
+
+    <div class="nav-item" data-page="models" onclick="showPage('models')">
+      <div class="nav-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/></svg>
+      </div>
+      Models & Investments
+    </div>
+
+    <div class="nav-item" data-page="decisions" onclick="showPage('decisions')">
+      <div class="nav-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      Team Decisions
+    </div>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="sidebar-footer-text">Triumph Capital Management</div>
+  </div>
+</aside>
+
+<!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+<main class="main">
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-toggle" onclick="toggleSidebar()" title="Toggle sidebar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </div>
+    <div class="topbar-breadcrumb">
+      <span>Triumph Lab</span>
+      <span style="color:var(--text-muted);">›</span>
+      <span class="crumb-active" id="breadcrumb-page">Dashboard</span>
+    </div>
+    <div class="topbar-right">
+      <div class="topbar-avatar">JT</div>
+    </div>
+  </header>
+
+  <!-- CONTENT AREA -->
+  <div class="content">
+
+    <!-- ═══ DASHBOARD ═══ -->
+    <div class="page active" id="page-dashboard">
+      <div class="page-header">
+        <div class="page-title">Triumph Lab</div>
+        <div class="page-desc">Internal decision hub for reviewing and approving ideas across brand, portal design, technology, and operations.</div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-label">Items in Review</div>
+          <div class="stat-value">4</div>
+          <div class="stat-meta">Across 1 category</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Categories</div>
+          <div class="stat-value">6</div>
+          <div class="stat-meta">Brand, Portal, Tech, Compliance, Models, Decisions</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Team Members</div>
+          <div class="stat-value">6</div>
+          <div class="stat-meta">JT, Derek, Brandon, Hannah, Jamar, Meghan</div>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div class="section-title">Needs Your Input</div>
+        <a class="section-link" onclick="showPage('brand')">View all &rarr;</a>
+      </div>
+      <div class="activity-list">
+        <div class="activity-item" style="cursor:pointer;" onclick="showPage('brand')">
+          <div class="activity-dot dot-bronze"></div>
+          <div class="activity-content">
+            <div class="activity-title">All Three Logo Concepts — Initial Exploration</div>
+            <div class="activity-sub">Brand & Design &middot; In Review &middot; Three directions: Heritage Elevated, Modern Authority, Refined Distinction</div>
+          </div>
+          <div class="activity-time">Today</div>
+        </div>
+        <div class="activity-item" style="cursor:pointer;" onclick="showPage('brand')">
+          <div class="activity-dot dot-bronze"></div>
+          <div class="activity-content">
+            <div class="activity-title">Concept 1 Expanded — Heritage Elevated</div>
+            <div class="activity-sub">Brand & Design &middot; In Review &middot; Full exploration with light and dark themes</div>
+          </div>
+          <div class="activity-time">Today</div>
+        </div>
+        <div class="activity-item" style="cursor:pointer;" onclick="showPage('brand')">
+          <div class="activity-dot dot-bronze"></div>
+          <div class="activity-content">
+            <div class="activity-title">TC Monogram Integration</div>
+            <div class="activity-sub">Brand & Design &middot; In Review &middot; How the existing TC logo adapts into each concept direction</div>
+          </div>
+          <div class="activity-time">Today</div>
+        </div>
+        <div class="activity-item" style="cursor:pointer;" onclick="showPage('brand')">
+          <div class="activity-dot dot-blue"></div>
+          <div class="activity-content">
+            <div class="activity-title">Light vs Dark Theme Decision</div>
+            <div class="activity-sub">Brand & Design &middot; Proposed &middot; Vote on the primary theme direction</div>
+          </div>
+          <div class="activity-time">Today</div>
+        </div>
+      </div>
+
+      <div class="section-header">
+        <div class="section-title">Recent Activity</div>
+      </div>
+      <div class="activity-list">
+        <div class="activity-item">
+          <div class="activity-dot dot-bronze"></div>
+          <div class="activity-content">
+            <div class="activity-title">Brand & Design category created</div>
+            <div class="activity-sub">4 items added for managed program branding review</div>
+          </div>
+          <div class="activity-time">Just now</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-dot dot-green"></div>
+          <div class="activity-content">
+            <div class="activity-title">Triumph Lab launched</div>
+            <div class="activity-sub">Decision hub is live for team review</div>
+          </div>
+          <div class="activity-time">Just now</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ BRAND & DESIGN ═══ -->
+    <div class="page" id="page-brand">
+      <div class="page-header">
+        <div class="page-title">Brand & Design</div>
+        <div class="page-desc">Logo concepts, color palettes, typography decisions — where the managed program branding lives.</div>
+      </div>
+
+      <div class="section-header">
+        <div class="section-title">Managed Program Identity</div>
+        <span class="section-link">3 items in review, 1 proposed</span>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Card 1 -->
+        <div class="decision-card">
+          <div class="card-top">
+            <div class="card-title">All Three Logo Concepts — Initial Exploration</div>
+            <div class="status-badge badge-review">In Review</div>
+          </div>
+          <div class="card-body">
+            <div class="card-desc">Three directions side by side: Heritage Elevated, Modern Authority, Refined Distinction. Compare shield marks, typography, and color approaches.</div>
+          </div>
+          <div class="card-footer">
+            <div class="card-meta">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+              HTML Concept
+            </div>
+            <button class="card-action" onclick="openModal('All Three Logo Concepts', 'triumph-managed-program-concepts.html')">View Concept</button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="decision-card">
+          <div class="card-top">
+            <div class="card-title">Concept 1 Expanded — Heritage Elevated</div>
+            <div class="status-badge badge-review">In Review</div>
+          </div>
+          <div class="card-body">
+            <div class="card-desc">Deep dive into the shield + TC monogram with bronze accent. Includes light and dark theme variations, industry color analysis, and portal mockups.</div>
+          </div>
+          <div class="card-footer">
+            <div class="card-meta">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+              HTML Concept
+            </div>
+            <button class="card-action" onclick="openModal('Concept 1 — Heritage Elevated', 'triumph-concept1-expanded.html')">View Concept</button>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="decision-card">
+          <div class="card-top">
+            <div class="card-title">TC Monogram Integration</div>
+            <div class="status-badge badge-review">In Review</div>
+          </div>
+          <div class="card-body">
+            <div class="card-desc">How the existing TC chrome logo adapts into each concept direction. Explores monogram variations across Heritage, Modern, and Refined approaches.</div>
+          </div>
+          <div class="card-footer">
+            <div class="card-meta">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+              HTML Concept
+            </div>
+            <button class="card-action" onclick="openModal('TC Monogram Integration', 'triumph-tc-integration_1.html')">View Concept</button>
+          </div>
+        </div>
+
+        <!-- Card 4: Vote -->
+        <div class="decision-card">
+          <div class="card-top">
+            <div class="card-title">Light vs Dark Theme Decision</div>
+            <div class="status-badge badge-proposed">Proposed</div>
+          </div>
+          <div class="card-body">
+            <div class="card-desc">Recommendation: Light theme for the working portal (dashboard, account management, reports) and dark theme for login screens, marketing, and presentation materials. Industry standard supports light — Orion, AssetMark, GeoWealth all use light themes.</div>
+            <div class="vote-options">
+              <button class="vote-btn" onclick="selectVote(this)">Light primary + Dark login</button>
+              <button class="vote-btn" onclick="selectVote(this)">Full light</button>
+              <button class="vote-btn" onclick="selectVote(this)">Full dark</button>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="card-meta">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 00-6 0v4"/><rect x="5" y="9" width="14" height="12" rx="2"/></svg>
+              Vote to decide
+            </div>
+            <span style="font-size:11px; color:var(--text-muted);">0 votes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ PORTAL & UX ═══ -->
+    <div class="page" id="page-portal">
+      <div class="page-header">
+        <div class="page-title">Portal & UX</div>
+        <div class="page-desc">Dashboard mockups, advisor portal wireframes, client-facing UI decisions.</div>
+      </div>
+      <div class="empty-state">
+        <div class="empty-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        </div>
+        <div class="empty-title">Nothing here yet</div>
+        <div class="empty-divider"></div>
+        <div class="empty-desc">Advisor dashboard wireframes, client portal designs, and login flow mockups will appear here as they're added.</div>
+      </div>
+    </div>
+
+    <!-- ═══ TECH & INTEGRATIONS ═══ -->
+    <div class="page" id="page-tech">
+      <div class="page-header">
+        <div class="page-title">Tech & Integrations</div>
+        <div class="page-desc">Black Diamond API, Supabase architecture, Schwab/Fidelity connectivity, AI features.</div>
+      </div>
+      <div class="empty-state">
+        <div class="empty-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+        </div>
+        <div class="empty-title">Nothing here yet</div>
+        <div class="empty-divider"></div>
+        <div class="empty-desc">API architecture decisions, database schema reviews, and integration status updates will appear here as they're added.</div>
+      </div>
+    </div>
+
+    <!-- ═══ COMPLIANCE & OPS ═══ -->
+    <div class="page" id="page-compliance">
+      <div class="page-header">
+        <div class="page-title">Compliance & Operations</div>
+        <div class="page-desc">Surveillance tools, TTAMP committee workflows, reporting templates.</div>
+      </div>
+      <div class="empty-state">
+        <div class="empty-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <div class="empty-title">Nothing here yet</div>
+        <div class="empty-divider"></div>
+        <div class="empty-desc">Surveillance tool decisions, committee workflow designs, and reporting template reviews will appear here as they're added.</div>
+      </div>
+    </div>
+
+    <!-- ═══ MODELS & INVESTMENTS ═══ -->
+    <div class="page" id="page-models">
+      <div class="page-header">
+        <div class="page-title">Models & Investments</div>
+        <div class="page-desc">Model lineup decisions, allocation strategies, factsheet designs.</div>
+      </div>
+      <div class="empty-state">
+        <div class="empty-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="3" y1="20" x2="21" y2="20"/></svg>
+        </div>
+        <div class="empty-title">Nothing here yet</div>
+        <div class="empty-divider"></div>
+        <div class="empty-desc">Model lineup changes, allocation strategy reviews, and factsheet design approvals will appear here as they're added.</div>
+      </div>
+    </div>
+
+    <!-- ═══ TEAM DECISIONS ═══ -->
+    <div class="page" id="page-decisions">
+      <div class="page-header">
+        <div class="page-title">Team Decisions</div>
+        <div class="page-desc">Items needing votes or input, active discussion items with status tracking.</div>
+      </div>
+      <div class="empty-state">
+        <div class="empty-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="empty-title">Nothing here yet</div>
+        <div class="empty-divider"></div>
+        <div class="empty-desc">Cross-category decisions requiring team votes and input will appear here. Items can be proposed, reviewed, and approved.</div>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</main>
+
+<!-- ═══════════════ MODAL ═══════════════ -->
+<div class="modal-overlay" id="modal" onclick="closeModalBackdrop(event)">
+  <div class="modal-container">
+    <div class="modal-topbar">
+      <div class="modal-title">
+        <span id="modal-title-text"></span>
+        <span class="status-badge badge-review">In Review</span>
+      </div>
+      <button class="modal-close" onclick="closeModal()" title="Close (Esc)">&times;</button>
+    </div>
+    <div class="modal-body">
+      <iframe id="modal-iframe" src="about:blank"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── PAGE NAVIGATION ──
+  const pages = {
+    dashboard: 'Dashboard',
+    brand: 'Brand & Design',
+    portal: 'Portal & UX',
+    tech: 'Tech & Integrations',
+    compliance: 'Compliance & Operations',
+    models: 'Models & Investments',
+    decisions: 'Team Decisions'
+  };
+
+  function showPage(pageId) {
+    // Update pages
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const target = document.getElementById('page-' + pageId);
+    if (target) target.classList.add('active');
+
+    // Update nav
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    const navItem = document.querySelector(`.nav-item[data-page="${pageId}"]`);
+    if (navItem) navItem.classList.add('active');
+
+    // Update breadcrumb
+    document.getElementById('breadcrumb-page').textContent = pages[pageId] || pageId;
+
+    // Close mobile sidebar
+    if (window.innerWidth <= 768) {
+      document.getElementById('sidebar').classList.remove('mobile-open');
+    }
+  }
+
+  // ── SIDEBAR TOGGLE ──
+  function toggleSidebar() {
+    if (window.innerWidth <= 768) {
+      document.getElementById('sidebar').classList.toggle('mobile-open');
+    } else {
+      document.body.classList.toggle('sidebar-closed');
+    }
+  }
+
+  // ── MODAL ──
+  function openModal(title, src) {
+    document.getElementById('modal-title-text').textContent = title;
+    document.getElementById('modal-iframe').src = src;
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('modal');
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      document.getElementById('modal-iframe').src = 'about:blank';
+    }, 300);
+  }
+
+  function closeModalBackdrop(e) {
+    if (e.target === document.getElementById('modal')) {
+      closeModal();
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // ── VOTE (visual only) ──
+  function selectVote(btn) {
+    const parent = btn.closest('.vote-options');
+    parent.querySelectorAll('.vote-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  }
+
+  // ── LOGIN GATE ──
+  function handleLogin(e) {
+    e.preventDefault();
+    const u = document.getElementById('loginUser').value.trim();
+    const p = document.getElementById('loginPass').value;
+    if (u === 'tcm' && p === 'tcm2026') {
+      document.getElementById('loginGate').classList.add('hidden');
+      sessionStorage.setItem('tlab_auth', '1');
+    } else {
+      const err = document.getElementById('loginError');
+      err.textContent = 'Invalid credentials. Please try again.';
+      document.getElementById('loginPass').value = '';
+      document.getElementById('loginPass').focus();
+    }
+    return false;
+  }
+
+  // Check session on load
+  if (sessionStorage.getItem('tlab_auth') === '1') {
+    document.getElementById('loginGate').classList.add('hidden');
+  }
+</script>
+
+</body>
+</html>

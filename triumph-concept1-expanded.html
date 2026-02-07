@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triumph Managed Program — Concept 1 Expanded</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0C0E12;
+    --surface: #14161C;
+    --surface2: #1C1F28;
+    --border: #2A2D38;
+    --text: #E8E6E3;
+    --text-muted: #8B8D94;
+    --accent: #C4955A;
+    --accent-light: #D4A86A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.6; }
+
+  .header { padding: 56px 48px 36px; border-bottom: 1px solid var(--border); }
+  .label { font-family: 'Outfit'; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+  .header h1 { font-family: 'Playfair Display'; font-size: 36px; font-weight: 500; color: #fff; margin-bottom: 6px; }
+  .header p { color: var(--text-muted); font-size: 14px; max-width: 720px; line-height: 1.8; }
+
+  .section { padding: 48px; border-bottom: 1px solid var(--border); }
+  .section-label { font-family: 'Outfit'; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display'; font-size: 24px; font-weight: 500; color: #fff; margin-bottom: 4px; }
+  .section-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 28px; max-width: 620px; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+
+  .card { border-radius: 14px; overflow: hidden; position: relative; }
+  .card-display { display: flex; align-items: center; justify-content: center; position: relative; }
+  .card-label { position: absolute; bottom: 12px; left: 14px; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; font-family: 'Outfit'; }
+  .cl-dark { color: rgba(255,255,255,0.35); }
+  .cl-light { color: rgba(0,0,0,0.22); }
+
+  .note { background: var(--surface); border-radius: 14px; padding: 22px 26px; border: 1px solid var(--border); margin-top: 18px; }
+  .note h4 { font-family: 'Outfit'; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .note p { font-size: 13px; color: var(--text-muted); line-height: 1.8; }
+
+  .insight-box { background: linear-gradient(135deg, rgba(196,149,90,0.06), rgba(196,149,90,0.02)); border: 1px solid rgba(196,149,90,0.15); border-radius: 14px; padding: 22px 26px; margin-bottom: 18px; }
+  .insight-box h4 { font-family: 'Outfit'; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .insight-box p { font-size: 13px; color: var(--text-muted); line-height: 1.8; }
+
+  /* Browser frame */
+  .browser { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
+  .browser-bar { height: 30px; background: var(--surface2); display: flex; align-items: center; padding: 0 12px; gap: 5px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--border); }
+
+  .divider { width: 44px; height: 2px; background: var(--accent); margin-bottom: 18px; }
+
+  /* Recommendation */
+  .rec { padding: 48px; background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="label">Concept 01 — Expanded</div>
+  <h1>Heritage Elevated: Full Exploration</h1>
+  <p>Expanding the shield + bronze direction with light and dark theme variations, decorative flourish integration from the parent logo, and multiple lockup formats. Includes industry color trend analysis to inform the final direction.</p>
+</div>
+
+<!-- ============================================================ -->
+<!-- INDUSTRY INSIGHT -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-label">Industry Color Analysis</div>
+  <div class="section-title">Light vs. Dark in the TAMP World</div>
+  <div class="section-desc">You're absolutely right — the overwhelming majority of TAMP and financial advisor platforms use light themes. Here's the breakdown and what it means for your choice.</div>
+
+  <div class="insight-box">
+    <h4>The Industry Landscape</h4>
+    <p>Almost every major TAMP uses a predominantly white/light background: Orion, AssetMark, GeoWealth, SEI, Envestnet, Brookstone — they all run light themes with blue or green accents. The reasoning is practical: advisors spend hours in these portals reviewing data tables, account lists, and reports. Light backgrounds reduce eye strain for prolonged use and make dense tabular data more scannable. Black Diamond is one of the few that leans darker, and even they use a mostly light dashboard with dark nav elements.</p>
+  </div>
+
+  <div class="insight-box">
+    <h4>What This Means for Triumph Managed Program</h4>
+    <p>A light theme is the safer, more conventional choice — and probably the right default for daily-use advisor portal. But here's the play: use a <strong style="color:#fff;">dark theme for marketing and presentation contexts</strong> (login page, model factsheets, pitch materials) and a <strong style="color:#fff;">light theme for the working portal</strong> (dashboard, account management, reports). This gives you the premium feel of dark for first impressions while keeping the working environment comfortable. Below, I've mocked up both.</p>
+  </div>
+
+  <div class="grid-4">
+    <div style="background: var(--surface); border-radius: 10px; padding: 16px; border: 1px solid var(--border); text-align: center;">
+      <div style="width: 40px; height: 40px; border-radius: 8px; background: #0054A0; margin: 0 auto 10px;"></div>
+      <div style="font-size: 11px; font-weight: 600; color: #fff; margin-bottom: 2px;">Orion</div>
+      <div style="font-size: 10px; color: var(--text-muted);">White bg, blue accent</div>
+    </div>
+    <div style="background: var(--surface); border-radius: 10px; padding: 16px; border: 1px solid var(--border); text-align: center;">
+      <div style="width: 40px; height: 40px; border-radius: 8px; background: #00796B; margin: 0 auto 10px;"></div>
+      <div style="font-size: 11px; font-weight: 600; color: #fff; margin-bottom: 2px;">AssetMark</div>
+      <div style="font-size: 10px; color: var(--text-muted);">White bg, teal accent</div>
+    </div>
+    <div style="background: var(--surface); border-radius: 10px; padding: 16px; border: 1px solid var(--border); text-align: center;">
+      <div style="width: 40px; height: 40px; border-radius: 8px; background: #2E5B3C; margin: 0 auto 10px;"></div>
+      <div style="font-size: 11px; font-weight: 600; color: #fff; margin-bottom: 2px;">GeoWealth</div>
+      <div style="font-size: 10px; color: var(--text-muted);">White bg, green accent</div>
+    </div>
+    <div style="background: var(--surface); border-radius: 10px; padding: 16px; border: 1px solid var(--border); text-align: center;">
+      <div style="width: 40px; height: 40px; border-radius: 8px; background: linear-gradient(135deg, #1A2744, #C4955A); margin: 0 auto 10px;"></div>
+      <div style="font-size: 11px; font-weight: 600; color: var(--accent); margin-bottom: 2px;">Triumph MP</div>
+      <div style="font-size: 10px; color: var(--text-muted);">Navy/cream + bronze</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- LOGO VARIATIONS -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-label">Logo System</div>
+  <div class="section-title">TC Mark — All Variations</div>
+  <div class="section-desc">The full logo system with shield mark, horizontal lockups, flourish integration, and a standalone icon for favicons and app contexts.</div>
+
+  <!-- Row 1: Primary marks -->
+  <div class="grid-3">
+    <!-- Shield + TC dark -->
+    <div class="card">
+      <div class="card-display" style="height: 260px; background: linear-gradient(135deg, #0B1628, #132240);">
+        <svg width="140" height="180" viewBox="0 0 140 180">
+          <defs>
+            <linearGradient id="sg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C4955A" stop-opacity="0.9"/><stop offset="100%" stop-color="#8B6B3A" stop-opacity="0.7"/></linearGradient>
+          </defs>
+          <path d="M70 12 L128 36 L128 92 Q128 138 70 158 Q12 138 12 92 L12 36 Z" fill="#0F1E38" stroke="url(#sg1)" stroke-width="1.5"/>
+          <path d="M70 22 L120 42 L120 90 Q120 130 70 148 Q20 130 20 90 L20 42 Z" fill="none" stroke="#C4955A" stroke-width="0.3" opacity="0.2"/>
+          <text x="70" y="90" font-family="Playfair Display" font-style="italic" font-size="50" font-weight="500" fill="#C4955A" text-anchor="middle" dominant-baseline="middle">TC</text>
+          <!-- Flourish under TC -->
+          <path d="M42 112 Q56 118 70 112 Q84 106 98 112" fill="none" stroke="#C4955A" stroke-width="0.6" opacity="0.4"/>
+          <circle cx="42" cy="112" r="1.5" fill="#C4955A" opacity="0.3"/>
+          <circle cx="98" cy="112" r="1.5" fill="#C4955A" opacity="0.3"/>
+        </svg>
+        <div class="card-label cl-dark">Shield — Dark</div>
+      </div>
+    </div>
+
+    <!-- Shield + TC light -->
+    <div class="card">
+      <div class="card-display" style="height: 260px; background: linear-gradient(135deg, #F8F5F0, #F0ECE4);">
+        <svg width="140" height="180" viewBox="0 0 140 180">
+          <path d="M70 12 L128 36 L128 92 Q128 138 70 158 Q12 138 12 92 L12 36 Z" fill="#F4F0EA" stroke="#1A2744" stroke-width="1.2"/>
+          <path d="M70 22 L120 42 L120 90 Q120 130 70 148 Q20 130 20 90 L20 42 Z" fill="none" stroke="#1A2744" stroke-width="0.2" opacity="0.12"/>
+          <text x="70" y="90" font-family="Playfair Display" font-style="italic" font-size="50" font-weight="500" fill="#1A2744" text-anchor="middle" dominant-baseline="middle">TC</text>
+          <path d="M42 112 Q56 118 70 112 Q84 106 98 112" fill="none" stroke="#8C7444" stroke-width="0.6" opacity="0.35"/>
+          <circle cx="42" cy="112" r="1.5" fill="#8C7444" opacity="0.25"/>
+          <circle cx="98" cy="112" r="1.5" fill="#8C7444" opacity="0.25"/>
+        </svg>
+        <div class="card-label cl-light">Shield — Light</div>
+      </div>
+    </div>
+
+    <!-- Shield minimal / white -->
+    <div class="card">
+      <div class="card-display" style="height: 260px; background: #fff;">
+        <svg width="140" height="180" viewBox="0 0 140 180">
+          <path d="M70 12 L128 36 L128 92 Q128 138 70 158 Q12 138 12 92 L12 36 Z" fill="none" stroke="#C4955A" stroke-width="1"/>
+          <text x="70" y="90" font-family="Playfair Display" font-style="italic" font-size="50" font-weight="500" fill="#C4955A" text-anchor="middle" dominant-baseline="middle">TC</text>
+          <path d="M42 112 Q56 118 70 112 Q84 106 98 112" fill="none" stroke="#C4955A" stroke-width="0.5" opacity="0.3"/>
+        </svg>
+        <div class="card-label cl-light">Shield — Minimal White</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: Horizontal lockups with flourish -->
+  <div class="grid-2">
+    <!-- Dark horizontal with flourish -->
+    <div class="card">
+      <div class="card-display" style="height: 200px; background: linear-gradient(135deg, #0B1628, #0F1E38);">
+        <svg width="340" height="120" viewBox="0 0 340 120">
+          <!-- Small shield -->
+          <path d="M28 10 L52 19 L52 42 Q52 60 28 68 Q4 60 4 42 L4 19 Z" fill="#0F1E38" stroke="#C4955A" stroke-width="1"/>
+          <text x="28" y="42" font-family="Playfair Display" font-style="italic" font-size="22" font-weight="500" fill="#C4955A" text-anchor="middle" dominant-baseline="middle">TC</text>
+          <!-- Text -->
+          <text x="70" y="32" font-family="Playfair Display" font-size="19" font-weight="500" fill="#E8DCC8" letter-spacing="1.5">TRIUMPH</text>
+          <!-- Flourish line -->
+          <path d="M70 42 Q100 48 130 42 Q160 36 190 42 Q210 46 225 42" fill="none" stroke="#C4955A" stroke-width="0.6" opacity="0.45"/>
+          <text x="70" y="58" font-family="Outfit" font-size="9" font-weight="500" fill="#C4955A" letter-spacing="3.5">MANAGED PROGRAM</text>
+          <!-- Subtle bracket flourish under "MANAGED PROGRAM" -->
+          <path d="M70 66 Q80 72 100 68" fill="none" stroke="#C4955A" stroke-width="0.4" opacity="0.3"/>
+          <path d="M195 66 Q185 72 165 68" fill="none" stroke="#C4955A" stroke-width="0.4" opacity="0.3"/>
+          <text x="70" y="82" font-family="DM Sans" font-size="7" fill="rgba(232,220,200,0.3)" letter-spacing="1.2">CAPITAL MANAGEMENT</text>
+        </svg>
+        <div class="card-label cl-dark">Horizontal — Dark w/ Flourish</div>
+      </div>
+    </div>
+
+    <!-- Light horizontal with flourish -->
+    <div class="card">
+      <div class="card-display" style="height: 200px; background: linear-gradient(135deg, #F8F5F0, #F0ECE4);">
+        <svg width="340" height="120" viewBox="0 0 340 120">
+          <path d="M28 10 L52 19 L52 42 Q52 60 28 68 Q4 60 4 42 L4 19 Z" fill="#F4F0EA" stroke="#1A2744" stroke-width="1"/>
+          <text x="28" y="42" font-family="Playfair Display" font-style="italic" font-size="22" font-weight="500" fill="#1A2744" text-anchor="middle" dominant-baseline="middle">TC</text>
+          <text x="70" y="32" font-family="Playfair Display" font-size="19" font-weight="500" fill="#1A2744" letter-spacing="1.5">TRIUMPH</text>
+          <path d="M70 42 Q100 48 130 42 Q160 36 190 42 Q210 46 225 42" fill="none" stroke="#8C7444" stroke-width="0.6" opacity="0.35"/>
+          <text x="70" y="58" font-family="Outfit" font-size="9" font-weight="500" fill="#8C7444" letter-spacing="3.5">MANAGED PROGRAM</text>
+          <path d="M70 66 Q80 72 100 68" fill="none" stroke="#8C7444" stroke-width="0.4" opacity="0.25"/>
+          <path d="M195 66 Q185 72 165 68" fill="none" stroke="#8C7444" stroke-width="0.4" opacity="0.25"/>
+          <text x="70" y="82" font-family="DM Sans" font-size="7" fill="rgba(26,39,68,0.25)" letter-spacing="1.2">CAPITAL MANAGEMENT</text>
+        </svg>
+        <div class="card-label cl-light">Horizontal — Light w/ Flourish</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 3: Stacked center with full flourish treatment -->
+  <div class="grid-2">
+    <!-- Dark stacked with decorative flourish -->
+    <div class="card">
+      <div class="card-display" style="height: 300px; background: linear-gradient(135deg, #0B1628, #0E1A33);">
+        <svg width="260" height="240" viewBox="0 0 260 240">
+          <!-- Shield centered -->
+          <path d="M130 8 L180 28 L180 72 Q180 108 130 122 Q80 108 80 72 L80 28 Z" fill="#0F1E38" stroke="#C4955A" stroke-width="1.2"/>
+          <text x="130" y="72" font-family="Playfair Display" font-style="italic" font-size="40" font-weight="500" fill="#C4955A" text-anchor="middle" dominant-baseline="middle">TC</text>
+          <path d="M105 92 Q118 97 130 92 Q142 87 155 92" fill="none" stroke="#C4955A" stroke-width="0.5" opacity="0.35"/>
+          <!-- TRIUMPH -->
+          <text x="130" y="148" font-family="Playfair Display" font-size="20" font-weight="500" fill="#E8DCC8" text-anchor="middle" letter-spacing="4">TRIUMPH</text>
+          <!-- Full decorative flourish bracket — inspired by document logo -->
+          <path d="M52 162 Q68 158 85 162 Q100 166 115 160 L130 157 L145 160 Q160 166 175 162 Q192 158 208 162" fill="none" stroke="#C4955A" stroke-width="0.7" opacity="0.5"/>
+          <!-- Small curls at ends -->
+          <path d="M52 162 Q46 158 48 152" fill="none" stroke="#C4955A" stroke-width="0.5" opacity="0.35"/>
+          <path d="M208 162 Q214 158 212 152" fill="none" stroke="#C4955A" stroke-width="0.5" opacity="0.35"/>
+          <!-- Center drop -->
+          <circle cx="130" cy="157" r="1.2" fill="#C4955A" opacity="0.5"/>
+          <!-- MANAGED PROGRAM -->
+          <text x="130" y="180" font-family="Outfit" font-size="9" font-weight="500" fill="#C4955A" text-anchor="middle" letter-spacing="4">MANAGED PROGRAM</text>
+          <!-- Subtle sub-flourish -->
+          <path d="M92 188 Q111 192 130 188 Q149 184 168 188" fill="none" stroke="#C4955A" stroke-width="0.4" opacity="0.25"/>
+          <!-- "By" line -->
+          <text x="130" y="210" font-family="DM Sans" font-size="7" fill="rgba(232,220,200,0.25)" text-anchor="middle" letter-spacing="1.5">CAPITAL MANAGEMENT</text>
+        </svg>
+        <div class="card-label cl-dark">Stacked — Dark w/ Full Flourish</div>
+      </div>
+    </div>
+
+    <!-- Light stacked with decorative flourish -->
+    <div class="card">
+      <div class="card-display" style="height: 300px; background: linear-gradient(135deg, #F8F5F0, #F0ECE4);">
+        <svg width="260" height="240" viewBox="0 0 260 240">
+          <path d="M130 8 L180 28 L180 72 Q180 108 130 122 Q80 108 80 72 L80 28 Z" fill="#F4F0EA" stroke="#1A2744" stroke-width="1"/>
+          <text x="130" y="72" font-family="Playfair Display" font-style="italic" font-size="40" font-weight="500" fill="#1A2744" text-anchor="middle" dominant-baseline="middle">TC</text>
+          <path d="M105 92 Q118 97 130 92 Q142 87 155 92" fill="none" stroke="#8C7444" stroke-width="0.5" opacity="0.3"/>
+          <text x="130" y="148" font-family="Playfair Display" font-size="20" font-weight="500" fill="#1A2744" text-anchor="middle" letter-spacing="4">TRIUMPH</text>
+          <path d="M52 162 Q68 158 85 162 Q100 166 115 160 L130 157 L145 160 Q160 166 175 162 Q192 158 208 162" fill="none" stroke="#8C7444" stroke-width="0.7" opacity="0.4"/>
+          <path d="M52 162 Q46 158 48 152" fill="none" stroke="#8C7444" stroke-width="0.5" opacity="0.3"/>
+          <path d="M208 162 Q214 158 212 152" fill="none" stroke="#8C7444" stroke-width="0.5" opacity="0.3"/>
+          <circle cx="130" cy="157" r="1.2" fill="#8C7444" opacity="0.4"/>
+          <text x="130" y="180" font-family="Outfit" font-size="9" font-weight="500" fill="#8C7444" text-anchor="middle" letter-spacing="4">MANAGED PROGRAM</text>
+          <path d="M92 188 Q111 192 130 188 Q149 184 168 188" fill="none" stroke="#8C7444" stroke-width="0.4" opacity="0.2"/>
+          <text x="130" y="210" font-family="DM Sans" font-size="7" fill="rgba(26,39,68,0.22)" text-anchor="middle" letter-spacing="1.5">CAPITAL MANAGEMENT</text>
+        </svg>
+        <div class="card-label cl-light">Stacked — Light w/ Full Flourish</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 4: Small icons / favicon / nav -->
+  <div class="grid-4">
+    <div class="card">
+      <div class="card-display" style="height: 140px; background: #0B1628;">
+        <svg width="48" height="56" viewBox="0 0 48 56"><path d="M24 4 L44 14 L44 34 Q44 48 24 54 Q4 48 4 34 L4 14 Z" fill="#0F1E38" stroke="#C4955A" stroke-width="0.8"/><text x="24" y="32" font-family="Playfair Display" font-style="italic" font-size="18" fill="#C4955A" text-anchor="middle" font-weight="500">TC</text></svg>
+        <div class="card-label cl-dark">Favicon / Nav — Dark</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-display" style="height: 140px; background: #F8F5F0;">
+        <svg width="48" height="56" viewBox="0 0 48 56"><path d="M24 4 L44 14 L44 34 Q44 48 24 54 Q4 48 4 34 L4 14 Z" fill="#F4F0EA" stroke="#1A2744" stroke-width="0.8"/><text x="24" y="32" font-family="Playfair Display" font-style="italic" font-size="18" fill="#1A2744" text-anchor="middle" font-weight="500">TC</text></svg>
+        <div class="card-label cl-light">Favicon / Nav — Light</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-display" style="height: 140px; background: #0B1628;">
+        <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="#0F1E38" stroke="#C4955A" stroke-width="0.8"/><text x="24" y="27" font-family="Playfair Display" font-style="italic" font-size="16" fill="#C4955A" text-anchor="middle" font-weight="500">TC</text></svg>
+        <div class="card-label cl-dark">Circle Alt — Dark</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-display" style="height: 140px; background: #F8F5F0;">
+        <svg width="48" height="48" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20" fill="#F4F0EA" stroke="#1A2744" stroke-width="0.8"/><text x="24" y="27" font-family="Playfair Display" font-style="italic" font-size="16" fill="#1A2744" text-anchor="middle" font-weight="500">TC</text></svg>
+        <div class="card-label cl-light">Circle Alt — Light</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <h4>About the Flourish</h4>
+    <p>The decorative scroll from your document logo (the S-curve bracket under "Private Wealth Management") is adapted here as a lighter, more refined flourish that frames the "MANAGED PROGRAM" text. It's used sparingly — present on formal/stacked versions but stripped down for nav-size and favicon usage. This mirrors how the parent brand uses it: full flourish on documents and formal contexts, simplified mark everywhere else.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- COLOR PALETTES -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-label">Color System</div>
+  <div class="section-title">Extended Palette — Dark & Light Themes</div>
+  <div class="section-desc">Full color system for both themes, plus guidance on when to use each.</div>
+
+  <div class="grid-2">
+    <!-- Dark palette -->
+    <div style="background: var(--surface); border-radius: 14px; padding: 24px; border: 1px solid var(--border);">
+      <div style="font-family: 'Outfit'; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">Dark Theme — Login, Marketing, Presentations</div>
+      <div style="display: flex; gap: 8px; margin-bottom: 28px;">
+        <div style="flex:1; height: 52px; border-radius: 8px; background: #0B1628; position: relative;"><span style="position: absolute; bottom: -18px; font-size: 9px; color: var(--text-muted); width: 100%; text-align: center;">#0B1628</span></div>
+        <div style="flex:1; height: 52px; border-radius: 8px; background: #1A2744;"><span style="position: absolute; bottom: -18px; font-size: 9px; color: var(--text-muted);">#1A2744</span></div>
+        <div style="flex:1; height: 52px; border-radius: 8px; background: #C4955A;"><span style="position: absolute; bottom: -18px; font-size: 9px; color: var(--text-muted);">#C4955A</span></div>
+        <div style="flex:1; height: 52px; border-radius: 8px; background: #E8DCC8;"><span style="position: absolute; bottom: -18px; font-size: 9px; color: var(--text-muted);">#E8DCC8</span></div>
+      </div>
+      <div style="display: flex; gap: 6px; margin-top: 28px; flex-wrap: wrap;">
+        <span style="background: #0B1628; color: #C4955A; padding: 4px 10px; border-radius: 4px; font-size: 10px; border: 1px solid rgba(196,149,90,0.2);">Backgrounds</span>
+        <span style="background: #1A2744; color: #E8DCC8; padding: 4px 10px; border-radius: 4px; font-size: 10px;">Cards / Surfaces</span>
+        <span style="background: #C4955A; color: #0B1628; padding: 4px 10px; border-radius: 4px; font-size: 10px;">Accents / CTAs</span>
+        <span style="background: #E8DCC8; color: #1A2744; padding: 4px 10px; border-radius: 4px; font-size: 10px;">Text / Headings</span>
+      </div>
+    </div>
+
+    <!-- Light palette -->
+    <div style="background: var(--surface); border-radius: 14px; padding: 24px; border: 1px solid var(--border);">
+      <div style="font-family: 'Outfit'; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">Light Theme — Working Portal, Dashboard, Reports</div>
+      <div style="display: flex; gap: 8px; margin-bottom: 28px;">
+        <div style="flex:1; height: 52px; border-radius: 8px; background: #F8F5F0;"></div>
+        <div style="flex:1; height: 52px; border-radius: 8px; background: #FFFFFF; border: 1px solid #E5E0D8;"></div>
+        <div style="flex:1; height: 52px; border-radius: 8px; background: #1A2744;"></div>
+        <div style="flex:1; height: 52px; border-radius: 8px; background: #8C7444;"></div>
+      </div>
+      <div style="display: flex; gap: 6px; margin-top: 28px; flex-wrap: wrap;">
+        <span style="background: #F8F5F0; color: #1A2744; padding: 4px 10px; border-radius: 4px; font-size: 10px;">Page Background</span>
+        <span style="background: #FFFFFF; color: #1A2744; padding: 4px 10px; border-radius: 4px; font-size: 10px; border: 1px solid #E5E0D8;">Cards / Tables</span>
+        <span style="background: #1A2744; color: #F8F5F0; padding: 4px 10px; border-radius: 4px; font-size: 10px;">Nav / Headers</span>
+        <span style="background: #8C7444; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 10px;">Accent / Links</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- LIGHT THEME PORTAL MOCKUP -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-label">Portal Mockup</div>
+  <div class="section-title">Light Theme — Working Dashboard</div>
+  <div class="section-desc">This is what advisors would see day-to-day. Warm cream background instead of stark white, navy nav bar, bronze accents — feels like Triumph but purpose-built for models.</div>
+
+  <div class="browser">
+    <div class="browser-bar"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+    <div style="background: #F8F5F0; color: #1A2744;">
+      <!-- NAV -->
+      <div style="display: flex; align-items: center; padding: 12px 28px; background: #1A2744; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <svg width="24" height="28" viewBox="0 0 24 28"><path d="M12 2 L22 8 L22 18 Q22 25 12 28 Q2 25 2 18 L2 8 Z" fill="#0F1E38" stroke="#C4955A" stroke-width="0.7"/><text x="12" y="16" font-family="Playfair Display" font-style="italic" font-size="10" fill="#C4955A" text-anchor="middle" font-weight="500">TC</text></svg>
+          <span style="font-family: 'Playfair Display'; font-weight: 500; font-size: 14px; color: #E8DCC8;">Triumph <span style="color: #C4955A; font-family: 'Outfit'; font-size: 9px; letter-spacing: 2px; vertical-align: 1px;">MANAGED</span></span>
+        </div>
+        <div style="display: flex; gap: 22px; font-family: 'DM Sans'; font-size: 12px; color: rgba(232,220,200,0.5);">
+          <span style="color: #C4955A;">Dashboard</span><span>Models</span><span>Accounts</span><span>Reports</span><span>Settings</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <div style="width: 28px; height: 28px; border-radius: 50%; background: rgba(196,149,90,0.15); display: flex; align-items: center; justify-content: center; font-size: 11px; color: #C4955A; font-weight: 600;">GS</div>
+        </div>
+      </div>
+      <!-- CONTENT -->
+      <div style="padding: 28px;">
+        <div style="margin-bottom: 24px;">
+          <div style="font-family: 'Playfair Display'; font-size: 22px; font-weight: 500; color: #1A2744;">Good morning, Greg</div>
+          <div style="font-size: 13px; color: #8B7E6E; margin-top: 2px;">Triumph Managed Program Dashboard</div>
+        </div>
+        <!-- Stats row -->
+        <div style="display: flex; gap: 14px; margin-bottom: 24px;">
+          <div style="flex: 1; background: #fff; border-radius: 10px; padding: 18px; border: 1px solid #E5E0D8;">
+            <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #8B7E6E; font-family: 'Outfit'; margin-bottom: 6px;">Enrolled Accounts</div>
+            <div style="font-size: 26px; font-weight: 600; color: #1A2744; font-family: 'DM Sans';">47</div>
+            <div style="font-size: 11px; color: #8C7444; margin-top: 4px;">↑ 3 this month</div>
+          </div>
+          <div style="flex: 1; background: #fff; border-radius: 10px; padding: 18px; border: 1px solid #E5E0D8;">
+            <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #8B7E6E; font-family: 'Outfit'; margin-bottom: 6px;">Total AUM</div>
+            <div style="font-size: 26px; font-weight: 600; color: #1A2744; font-family: 'DM Sans';">$12.4M</div>
+            <div style="font-size: 11px; color: #8C7444; margin-top: 4px;">↑ 4.2% from last quarter</div>
+          </div>
+          <div style="flex: 1; background: #fff; border-radius: 10px; padding: 18px; border: 1px solid #E5E0D8;">
+            <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #8B7E6E; font-family: 'Outfit'; margin-bottom: 6px;">Active Models</div>
+            <div style="font-size: 26px; font-weight: 600; color: #1A2744; font-family: 'DM Sans';">6</div>
+            <div style="font-size: 11px; color: #8B7E6E; margin-top: 4px;">Across 3 risk tiers</div>
+          </div>
+          <div style="flex: 1; background: #fff; border-radius: 10px; padding: 18px; border: 1px solid #E5E0D8;">
+            <div style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #8B7E6E; font-family: 'Outfit'; margin-bottom: 6px;">YTD Performance</div>
+            <div style="font-size: 26px; font-weight: 600; color: #2E7D42; font-family: 'DM Sans';">+9.1%</div>
+            <div style="font-size: 11px; color: #8B7E6E; margin-top: 4px;">Blended composite</div>
+          </div>
+        </div>
+        <!-- Table preview -->
+        <div style="background: #fff; border-radius: 10px; border: 1px solid #E5E0D8; overflow: hidden;">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 18px; border-bottom: 1px solid #E5E0D8;">
+            <div style="font-family: 'Outfit'; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: #8B7E6E;">Model Overview</div>
+            <div style="font-size: 11px; color: #8C7444; cursor: pointer;">View All →</div>
+          </div>
+          <table style="width: 100%; font-size: 12px; border-collapse: collapse;">
+            <tr style="background: #FDFBF8;">
+              <td style="padding: 11px 18px; color: #8B7E6E; font-family: 'Outfit'; font-size: 10px; letter-spacing: 1px; text-transform: uppercase;">Model</td>
+              <td style="padding: 11px 18px; color: #8B7E6E; font-family: 'Outfit'; font-size: 10px; letter-spacing: 1px;">Accounts</td>
+              <td style="padding: 11px 18px; color: #8B7E6E; font-family: 'Outfit'; font-size: 10px; letter-spacing: 1px;">AUM</td>
+              <td style="padding: 11px 18px; color: #8B7E6E; font-family: 'Outfit'; font-size: 10px; letter-spacing: 1px;">YTD</td>
+              <td style="padding: 11px 18px; color: #8B7E6E; font-family: 'Outfit'; font-size: 10px; letter-spacing: 1px;">Status</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #F0ECE4;">
+              <td style="padding: 11px 18px; font-weight: 500; color: #1A2744;">Conservative Growth</td>
+              <td style="padding: 11px 18px; color: #5A5348;">18</td>
+              <td style="padding: 11px 18px; color: #5A5348;">$4.2M</td>
+              <td style="padding: 11px 18px; color: #2E7D42; font-weight: 500;">+6.3%</td>
+              <td style="padding: 11px 18px;"><span style="background: rgba(46,125,66,0.08); color: #2E7D42; padding: 3px 10px; border-radius: 12px; font-size: 10px;">Active</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #F0ECE4;">
+              <td style="padding: 11px 18px; font-weight: 500; color: #1A2744;">Balanced Moderate</td>
+              <td style="padding: 11px 18px; color: #5A5348;">14</td>
+              <td style="padding: 11px 18px; color: #5A5348;">$3.8M</td>
+              <td style="padding: 11px 18px; color: #2E7D42; font-weight: 500;">+9.7%</td>
+              <td style="padding: 11px 18px;"><span style="background: rgba(46,125,66,0.08); color: #2E7D42; padding: 3px 10px; border-radius: 12px; font-size: 10px;">Active</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid #F0ECE4;">
+              <td style="padding: 11px 18px; font-weight: 500; color: #1A2744;">Aggressive Growth</td>
+              <td style="padding: 11px 18px; color: #5A5348;">8</td>
+              <td style="padding: 11px 18px; color: #5A5348;">$2.6M</td>
+              <td style="padding: 11px 18px; color: #2E7D42; font-weight: 500;">+14.2%</td>
+              <td style="padding: 11px 18px;"><span style="background: rgba(46,125,66,0.08); color: #2E7D42; padding: 3px 10px; border-radius: 12px; font-size: 10px;">Active</span></td>
+            </tr>
+            <tr>
+              <td style="padding: 11px 18px; font-weight: 500; color: #1A2744;">Income Preservation</td>
+              <td style="padding: 11px 18px; color: #5A5348;">7</td>
+              <td style="padding: 11px 18px; color: #5A5348;">$1.8M</td>
+              <td style="padding: 11px 18px; color: #2E7D42; font-weight: 500;">+4.8%</td>
+              <td style="padding: 11px 18px;"><span style="background: rgba(46,125,66,0.08); color: #2E7D42; padding: 3px 10px; border-radius: 12px; font-size: 10px;">Active</span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- DARK THEME LOGIN MOCKUP -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-label">Portal Mockup</div>
+  <div class="section-title">Dark Theme — Login & First Impression</div>
+  <div class="section-desc">The premium feel for login screens, model factsheets, and marketing materials. This is where the full flourish treatment shines.</div>
+
+  <div class="browser">
+    <div class="browser-bar"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+    <div style="background: linear-gradient(180deg, #0B1628 0%, #0E1A33 100%); color: #E8DCC8; min-height: 420px; display: flex; align-items: center; justify-content: center;">
+      <div style="text-align: center; max-width: 360px;">
+        <!-- Logo -->
+        <svg width="80" height="96" viewBox="0 0 80 96" style="margin-bottom: 20px;">
+          <path d="M40 4 L72 18 L72 52 Q72 76 40 88 Q8 76 8 52 L8 18 Z" fill="#0F1E38" stroke="#C4955A" stroke-width="1"/>
+          <text x="40" y="50" font-family="Playfair Display" font-style="italic" font-size="30" fill="#C4955A" text-anchor="middle" font-weight="500">TC</text>
+          <path d="M28 64 Q34 68 40 64 Q46 60 52 64" fill="none" stroke="#C4955A" stroke-width="0.4" opacity="0.35"/>
+        </svg>
+        <div style="font-family: 'Playfair Display'; font-size: 22px; font-weight: 500; color: #E8DCC8; letter-spacing: 2px; margin-bottom: 4px;">TRIUMPH</div>
+        <!-- Flourish -->
+        <svg width="200" height="16" viewBox="0 0 200 16" style="margin-bottom: 4px;">
+          <path d="M30 8 Q50 4 70 8 Q85 12 100 8 Q115 4 130 8 Q150 12 170 8" fill="none" stroke="#C4955A" stroke-width="0.6" opacity="0.45"/>
+          <path d="M30 8 Q24 4 26 0" fill="none" stroke="#C4955A" stroke-width="0.4" opacity="0.3"/>
+          <path d="M170 8 Q176 4 174 0" fill="none" stroke="#C4955A" stroke-width="0.4" opacity="0.3"/>
+          <circle cx="100" cy="8" r="1" fill="#C4955A" opacity="0.4"/>
+        </svg>
+        <div style="font-family: 'Outfit'; font-size: 10px; letter-spacing: 4px; color: #C4955A; margin-bottom: 32px;">MANAGED PROGRAM</div>
+        <!-- Login form -->
+        <div style="margin-bottom: 14px;">
+          <input type="text" placeholder="Email" style="width: 100%; padding: 12px 16px; background: rgba(196,149,90,0.06); border: 1px solid rgba(196,149,90,0.15); border-radius: 8px; color: #E8DCC8; font-family: 'DM Sans'; font-size: 13px; outline: none;" />
+        </div>
+        <div style="margin-bottom: 20px;">
+          <input type="password" placeholder="Password" style="width: 100%; padding: 12px 16px; background: rgba(196,149,90,0.06); border: 1px solid rgba(196,149,90,0.15); border-radius: 8px; color: #E8DCC8; font-family: 'DM Sans'; font-size: 13px; outline: none;" />
+        </div>
+        <button style="width: 100%; padding: 12px; background: #C4955A; border: none; border-radius: 8px; color: #0B1628; font-family: 'Outfit'; font-size: 12px; font-weight: 600; letter-spacing: 1.5px; cursor: pointer;">SIGN IN</button>
+        <div style="margin-top: 14px; font-size: 11px; color: rgba(232,220,200,0.3);">Triumph Capital Management</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- RECOMMENDATION -->
+<!-- ============================================================ -->
+<div class="rec">
+  <div class="section-label">Recommendation</div>
+  <div class="divider"></div>
+  <div style="font-family: 'Playfair Display'; font-size: 22px; color: #fff; margin-bottom: 14px;">The Dual-Theme Strategy</div>
+  <p style="color: var(--text-muted); font-size: 14px; line-height: 1.8; max-width: 700px; margin-bottom: 14px;">
+    Go with <strong style="color: #fff;">light theme as the default working environment</strong> — it's what every major TAMP does, and for good reason. Advisors will spend hours in this portal reviewing accounts and model data. The warm cream (#F8F5F0) instead of stark white differentiates you from the Orions and AssetMarks of the world while keeping readability high.
+  </p>
+  <p style="color: var(--text-muted); font-size: 14px; line-height: 1.8; max-width: 700px; margin-bottom: 14px;">
+    Use the <strong style="color: #fff;">dark theme for high-impact moments</strong>: the login screen, model factsheet PDFs, pitch decks, and onboarding flows. This is where the full flourish treatment and shield mark look their best and make the strongest impression.
+  </p>
+  <p style="color: var(--text-muted); font-size: 14px; line-height: 1.8; max-width: 700px;">
+    The <strong style="color: #fff;">decorative flourish</strong> from your document logo works beautifully as a subtle separator element. Use it on the stacked logo, login page, and formal documents — but keep it off the working dashboard where clean simplicity wins. The navy nav bar on the light portal carries enough brand presence without needing the flourish in everyday UI.
+  </p>
+</div>
+
+</body>
+</html>
