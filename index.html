@@ -730,7 +730,7 @@
     position: fixed;
     inset: 0;
     z-index: 9999;
-    background: #0E1525;
+    background: #FAF7F2;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -751,14 +751,14 @@
   }
   .login-bg-gradient {
     background:
-      radial-gradient(ellipse 70% 50% at 50% 40%, rgba(196,149,90,0.08) 0%, transparent 65%),
-      radial-gradient(ellipse 100% 70% at 50% 50%, rgba(26,39,68,0.5) 0%, transparent 55%),
-      linear-gradient(180deg, #0E1525 0%, #131D33 35%, #162444 60%, #131D33 100%);
+      radial-gradient(ellipse 70% 50% at 50% 40%, rgba(196,149,90,0.1) 0%, transparent 65%),
+      radial-gradient(ellipse 100% 70% at 50% 100%, rgba(196,149,90,0.06) 0%, transparent 55%),
+      linear-gradient(180deg, #FDFBF8 0%, #F8F4ED 35%, #F5F0E8 60%, #FAF7F2 100%);
   }
   .login-bg-grid {
     background-image:
-      linear-gradient(rgba(196,149,90,0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(196,149,90,0.035) 1px, transparent 1px);
+      linear-gradient(rgba(196,149,90,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(196,149,90,0.06) 1px, transparent 1px);
     background-size: 80px 80px;
     mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
     -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
@@ -775,15 +775,15 @@
   .login-ring {
     position: absolute;
     border-radius: 50%;
-    border: 1px solid rgba(196,149,90,0.06);
+    border: 1px solid rgba(196,149,90,0.1);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  .login-ring:nth-child(1) { width: 300px; height: 300px; border-color: rgba(196,149,90,0.1); }
-  .login-ring:nth-child(2) { width: 480px; height: 480px; border-color: rgba(196,149,90,0.065); }
-  .login-ring:nth-child(3) { width: 660px; height: 660px; border-color: rgba(196,149,90,0.04); }
-  .login-ring:nth-child(4) { width: 840px; height: 840px; border-color: rgba(196,149,90,0.02); }
+  .login-ring:nth-child(1) { width: 300px; height: 300px; border-color: rgba(196,149,90,0.15); }
+  .login-ring:nth-child(2) { width: 480px; height: 480px; border-color: rgba(196,149,90,0.1); }
+  .login-ring:nth-child(3) { width: 660px; height: 660px; border-color: rgba(196,149,90,0.06); }
+  .login-ring:nth-child(4) { width: 840px; height: 840px; border-color: rgba(196,149,90,0.03); }
 
   /* Expanding pulse ring */
   .login-pulse-ring {
@@ -794,7 +794,7 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    border: 1px solid rgba(196,149,90,0.15);
+    border: 1px solid rgba(196,149,90,0.2);
     animation: ringExpand 8s cubic-bezier(0.25,0,0.25,1) infinite;
     pointer-events: none;
   }
@@ -847,7 +847,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 32px;
     font-weight: 400;
-    color: #F0E8D8;
+    color: #2C2420;
     letter-spacing: 12px;
     text-indent: 12px;
     margin-bottom: 0;
@@ -867,12 +867,12 @@
     flex: 1;
     max-width: 90px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(196,149,90,0.45), transparent);
+    background: linear-gradient(90deg, transparent, rgba(196,149,90,0.6), transparent);
   }
   .login-flourish-diamond {
     width: 6px;
     height: 6px;
-    background: rgba(196,149,90,0.5);
+    background: rgba(196,149,90,0.7);
     transform: rotate(45deg);
     flex-shrink: 0;
   }
@@ -927,18 +927,18 @@
     font-size: 9px;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: rgba(196,149,90,0.6);
-    background: #131D33;
+    color: rgba(196,149,90,0.8);
+    background: #F6F2EB;
     padding: 0 8px;
     z-index: 1;
   }
   .login-input {
     width: 100%;
     padding: 16px 20px;
-    background: rgba(196,149,90,0.04);
-    border: 1px solid rgba(196,149,90,0.18);
-    border-radius: 4px;
-    color: #F0E8D8;
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(196,149,90,0.3);
+    border-radius: 8px;
+    color: #2C2420;
     font-family: 'DM Sans', sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -946,20 +946,20 @@
     outline: none;
     transition: all 0.3s ease;
   }
-  .login-input::placeholder { color: rgba(232,220,200,0.25); letter-spacing: 1px; }
+  .login-input::placeholder { color: rgba(120,100,80,0.35); letter-spacing: 1px; }
   .login-input:focus {
-    border-color: rgba(196,149,90,0.5);
-    background: rgba(196,149,90,0.07);
-    box-shadow: 0 0 0 3px rgba(196,149,90,0.06), 0 4px 24px rgba(0,0,0,0.25);
+    border-color: rgba(196,149,90,0.6);
+    background: #FFFFFF;
+    box-shadow: 0 0 0 3px rgba(196,149,90,0.1), 0 4px 24px rgba(196,149,90,0.08);
   }
 
   .login-btn {
     width: 100%;
     padding: 16px;
-    background: linear-gradient(135deg, rgba(196,149,90,0.15), rgba(196,149,90,0.05));
-    border: 1px solid rgba(196,149,90,0.4);
-    border-radius: 4px;
-    color: #D4A86A;
+    background: linear-gradient(135deg, #C4955A, #B8864E);
+    border: 1px solid rgba(196,149,90,0.6);
+    border-radius: 8px;
+    color: #FFFFFF;
     font-family: 'Outfit', sans-serif;
     font-size: 11px;
     font-weight: 600;
@@ -970,19 +970,21 @@
     margin-top: 4px;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 2px 8px rgba(196,149,90,0.2);
   }
   .login-btn::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(196,149,90,0.2), rgba(196,149,90,0.05));
+    background: linear-gradient(135deg, #D4A86A, #C4955A);
     opacity: 0;
     transition: opacity 0.35s ease;
   }
   .login-btn:hover {
-    border-color: rgba(196,149,90,0.7);
-    color: #F0E8D8;
-    box-shadow: 0 0 40px rgba(196,149,90,0.12), 0 2px 16px rgba(196,149,90,0.08);
+    border-color: rgba(196,149,90,0.8);
+    color: #FFFFFF;
+    box-shadow: 0 4px 20px rgba(196,149,90,0.3), 0 2px 8px rgba(196,149,90,0.15);
+    transform: translateY(-1px);
   }
   .login-btn:hover::before { opacity: 1; }
 
@@ -990,7 +992,7 @@
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
     font-weight: 400;
-    color: #E0896A;
+    color: #C25544;
     margin-top: 16px;
     height: 18px;
     letter-spacing: 0.5px;
@@ -1006,7 +1008,7 @@
   .login-footer-line {
     width: 28px;
     height: 1px;
-    background: rgba(196,149,90,0.2);
+    background: rgba(196,149,90,0.3);
     margin: 0 auto 14px;
   }
   .login-footer {
@@ -1014,7 +1016,7 @@
     font-size: 9px;
     letter-spacing: 3px;
     text-indent: 3px;
-    color: rgba(232,220,200,0.2);
+    color: rgba(120,100,80,0.4);
     text-transform: uppercase;
   }
 
@@ -1054,10 +1056,10 @@
   <div class="login-pulse-ring"></div>
 
   <!-- Corner accents -->
-  <div class="login-corner login-corner--tl"><svg viewBox="0 0 60 60" fill="none"><path d="M0 40 L0 0 L40 0" stroke="rgba(196,149,90,0.18)" stroke-width="0.5"/><circle cx="0" cy="0" r="2" fill="rgba(196,149,90,0.22)"/></svg></div>
-  <div class="login-corner login-corner--tr"><svg viewBox="0 0 60 60" fill="none"><path d="M0 40 L0 0 L40 0" stroke="rgba(196,149,90,0.18)" stroke-width="0.5"/><circle cx="0" cy="0" r="2" fill="rgba(196,149,90,0.22)"/></svg></div>
-  <div class="login-corner login-corner--bl"><svg viewBox="0 0 60 60" fill="none"><path d="M0 40 L0 0 L40 0" stroke="rgba(196,149,90,0.18)" stroke-width="0.5"/><circle cx="0" cy="0" r="2" fill="rgba(196,149,90,0.22)"/></svg></div>
-  <div class="login-corner login-corner--br"><svg viewBox="0 0 60 60" fill="none"><path d="M0 40 L0 0 L40 0" stroke="rgba(196,149,90,0.18)" stroke-width="0.5"/><circle cx="0" cy="0" r="2" fill="rgba(196,149,90,0.22)"/></svg></div>
+  <div class="login-corner login-corner--tl"><svg viewBox="0 0 60 60" fill="none"><path d="M0 40 L0 0 L40 0" stroke="rgba(196,149,90,0.3)" stroke-width="0.5"/><circle cx="0" cy="0" r="2" fill="rgba(196,149,90,0.35)"/></svg></div>
+  <div class="login-corner login-corner--tr"><svg viewBox="0 0 60 60" fill="none"><path d="M0 40 L0 0 L40 0" stroke="rgba(196,149,90,0.3)" stroke-width="0.5"/><circle cx="0" cy="0" r="2" fill="rgba(196,149,90,0.35)"/></svg></div>
+  <div class="login-corner login-corner--bl"><svg viewBox="0 0 60 60" fill="none"><path d="M0 40 L0 0 L40 0" stroke="rgba(196,149,90,0.3)" stroke-width="0.5"/><circle cx="0" cy="0" r="2" fill="rgba(196,149,90,0.35)"/></svg></div>
+  <div class="login-corner login-corner--br"><svg viewBox="0 0 60 60" fill="none"><path d="M0 40 L0 0 L40 0" stroke="rgba(196,149,90,0.3)" stroke-width="0.5"/><circle cx="0" cy="0" r="2" fill="rgba(196,149,90,0.35)"/></svg></div>
 
   <!-- Login content -->
   <div class="login-box">
@@ -1069,8 +1071,8 @@
             <stop offset="100%" stop-color="#C4955A" stop-opacity="0.5"/>
           </linearGradient>
         </defs>
-        <path d="M40 4 L72 18 L72 52 Q72 76 40 88 Q8 76 8 52 L8 18 Z" fill="rgba(18,30,52,0.7)" stroke="url(#shieldGrad)" stroke-width="1.2"/>
-        <path d="M40 10 L66 22 L66 50 Q66 72 40 82 Q14 72 14 50 L14 22 Z" fill="none" stroke="rgba(196,149,90,0.1)" stroke-width="0.5"/>
+        <path d="M40 4 L72 18 L72 52 Q72 76 40 88 Q8 76 8 52 L8 18 Z" fill="rgba(250,247,242,0.9)" stroke="url(#shieldGrad)" stroke-width="1.5"/>
+        <path d="M40 10 L66 22 L66 50 Q66 72 40 82 Q14 72 14 50 L14 22 Z" fill="none" stroke="rgba(196,149,90,0.2)" stroke-width="0.5"/>
         <text x="40" y="50" font-family="Playfair Display" font-style="italic" font-size="28" fill="#D4A86A" text-anchor="middle" dominant-baseline="middle" font-weight="500">TC</text>
         <path d="M28 64 Q34 68 40 64 Q46 60 52 64" fill="none" stroke="rgba(196,149,90,0.35)" stroke-width="0.6"/>
       </svg>
@@ -1094,21 +1096,21 @@
           <!-- Flask top rim -->
           <path d="M15 4 L33 4" stroke="#C4955A" stroke-width="1.8" stroke-linecap="round"/>
           <!-- Liquid level -->
-          <path d="M10 40 Q16 36 24 40 Q32 44 38 40 L42 46 Q44 50 41 53 Q38 56 34 56 L14 56 Q10 56 7 53 Q4 50 6 46 Z" fill="rgba(196,149,90,0.12)" stroke="none"/>
-          <path d="M10 40 Q16 36 24 40 Q32 44 38 40" stroke="rgba(196,149,90,0.4)" stroke-width="0.8" fill="none"/>
+          <path d="M10 40 Q16 36 24 40 Q32 44 38 40 L42 46 Q44 50 41 53 Q38 56 34 56 L14 56 Q10 56 7 53 Q4 50 6 46 Z" fill="rgba(196,149,90,0.2)" stroke="none"/>
+          <path d="M10 40 Q16 36 24 40 Q32 44 38 40" stroke="rgba(196,149,90,0.6)" stroke-width="0.8" fill="none"/>
           <!-- Orbit ring -->
-          <ellipse cx="24" cy="32" rx="22" ry="8" stroke="#C4955A" stroke-width="0.9" fill="none" opacity="0.35" transform="rotate(-20 24 32)"/>
+          <ellipse cx="24" cy="32" rx="22" ry="8" stroke="#C4955A" stroke-width="0.9" fill="none" opacity="0.5" transform="rotate(-20 24 32)"/>
           <!-- Bubbles -->
-          <circle cx="20" cy="34" r="1.8" fill="rgba(196,149,90,0.35)"/>
-          <circle cx="26" cy="30" r="1.2" fill="rgba(196,149,90,0.25)"/>
-          <circle cx="22" cy="26" r="0.8" fill="rgba(196,149,90,0.2)"/>
+          <circle cx="20" cy="34" r="1.8" fill="rgba(196,149,90,0.5)"/>
+          <circle cx="26" cy="30" r="1.2" fill="rgba(196,149,90,0.4)"/>
+          <circle cx="22" cy="26" r="0.8" fill="rgba(196,149,90,0.35)"/>
           <!-- Sparkle dots -->
-          <circle cx="8" cy="14" r="1" fill="rgba(196,149,90,0.3)"/>
-          <circle cx="40" cy="10" r="0.7" fill="rgba(196,149,90,0.2)"/>
-          <circle cx="42" cy="20" r="1.2" fill="rgba(196,149,90,0.25)"/>
+          <circle cx="8" cy="14" r="1" fill="rgba(196,149,90,0.45)"/>
+          <circle cx="40" cy="10" r="0.7" fill="rgba(196,149,90,0.35)"/>
+          <circle cx="42" cy="20" r="1.2" fill="rgba(196,149,90,0.4)"/>
           <!-- Small cross sparkles -->
-          <path d="M38 8 L38 12 M36 10 L40 10" stroke="rgba(196,149,90,0.3)" stroke-width="0.7" stroke-linecap="round"/>
-          <path d="M6 22 L6 25 M4.5 23.5 L7.5 23.5" stroke="rgba(196,149,90,0.2)" stroke-width="0.6" stroke-linecap="round"/>
+          <path d="M38 8 L38 12 M36 10 L40 10" stroke="rgba(196,149,90,0.45)" stroke-width="0.7" stroke-linecap="round"/>
+          <path d="M6 22 L6 25 M4.5 23.5 L7.5 23.5" stroke="rgba(196,149,90,0.35)" stroke-width="0.6" stroke-linecap="round"/>
         </svg>
       </div>
       <div class="login-lab-text">LAB</div>
