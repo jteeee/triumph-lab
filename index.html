@@ -625,6 +625,8 @@
     font-size: 20px;
   }
   .modal-close:hover { background: var(--border-light); color: var(--text); }
+  .modal-close-label { display: none; }
+  .modal-close-x { display: inline; }
 
   .modal-body {
     flex: 1;
@@ -647,7 +649,15 @@
     .sidebar.mobile-open { transform: translateX(0); }
     .main { margin-left: 0 !important; }
     .content { padding: 20px 16px 80px; }
-    .topbar { padding: 0 16px; height: 52px; }
+    .topbar { padding: 0 12px; height: 52px; }
+    .topbar-toggle {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: rgba(196,149,90,0.08);
+      border: 1px solid rgba(196,149,90,0.15);
+    }
+    .topbar-toggle svg { width: 26px; height: 26px; }
     .page-title { font-size: 22px; }
     .page-desc { font-size: 13px; }
     .page-header { margin-bottom: 24px; }
@@ -685,7 +695,26 @@
     .empty-title { font-size: 18px; }
     .empty-desc { font-size: 13px; }
     .modal-container { width: 100vw; height: 100vh; border-radius: 0; }
-    .modal-topbar { padding: 0 16px; }
+    .modal-topbar { padding: 0 12px; height: 56px; }
+    .modal-title { font-size: 13px; }
+    .modal-close {
+      width: auto;
+      height: 42px;
+      padding: 0 16px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border-radius: 10px;
+      background: rgba(196,149,90,0.1);
+      border: 1px solid rgba(196,149,90,0.2);
+      color: var(--bronze-dark);
+      gap: 6px;
+    }
+    .modal-close:hover {
+      background: rgba(196,149,90,0.2);
+    }
+    .modal-close-x { display: none; }
+    .modal-close-label { display: inline; }
     .login-box { padding: 0 20px; }
     .login-title { font-size: 26px; letter-spacing: 8px; text-indent: 8px; }
     .login-lab-text { font-size: 15px; letter-spacing: 8px; text-indent: 8px; }
@@ -1411,7 +1440,7 @@
       <div class="modal-title">
         <span id="modal-title-text"></span>
       </div>
-      <button class="modal-close" onclick="closeModal()" title="Close (Esc)">&times;</button>
+      <button class="modal-close" onclick="closeModal()" title="Close (Esc)"><span class="modal-close-x">&times;</span><span class="modal-close-label">&#x2715; Close</span></button>
     </div>
     <div class="modal-body">
       <iframe id="modal-iframe" src="about:blank"></iframe>
