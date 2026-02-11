@@ -327,6 +327,58 @@
     margin-top: 6px;
   }
 
+  /* Expandable card details */
+  .decision-card.expandable { cursor: pointer; }
+  .decision-card.expandable .card-top::after {
+    content: '▸';
+    font-size: 14px;
+    color: var(--text-muted);
+    transition: transform var(--transition);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .decision-card.expandable.expanded .card-top::after {
+    transform: rotate(90deg);
+    color: var(--bronze);
+  }
+  .card-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding: 0 24px;
+    border-top: 0 solid var(--border-light);
+  }
+  .decision-card.expanded .card-detail {
+    max-height: 600px;
+    padding: 16px 24px 20px;
+    border-top: 1px solid var(--border-light);
+  }
+  .card-detail-inner {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .card-detail-inner strong { color: var(--text); }
+  .card-detail-inner .detail-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--bronze-dark);
+    margin-top: 12px;
+    margin-bottom: 4px;
+  }
+  .card-detail-inner .detail-label:first-child { margin-top: 0; }
+  .card-detail-inner code {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--navy);
+  }
+
   .status-badge {
     font-family: 'Outfit', sans-serif;
     font-size: 10px;
@@ -1178,6 +1230,7 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
       </div>
       Tech & Integrations
+      <span class="item-count">7</span>
     </div>
 
     <div class="nav-item" data-page="compliance" onclick="showPage('compliance')">
@@ -1276,12 +1329,68 @@
       </div>
       <div class="activity-list">
         <div class="activity-item">
+          <div class="activity-dot dot-green"></div>
+          <div class="activity-content">
+            <div class="activity-title">DocuSign Production — TCM Account Verified</div>
+            <div class="activity-sub">Info@ account has full API access. Account ID, base URI (na3), and integration path confirmed. Build first, swap later.</div>
+          </div>
+          <div class="activity-time">Feb 11</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-dot dot-bronze"></div>
+          <div class="activity-content">
+            <div class="activity-title">Schwab DocuSign — No API (Confirmed by Schwab)</div>
+            <div class="activity-sub">Schwab confirmed they do not offer API integrations. Using TCM's own DocuSign account instead.</div>
+          </div>
+          <div class="activity-time">Feb 11</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-dot dot-green"></div>
+          <div class="activity-content">
+            <div class="activity-title">Dashboard Table — Redesigned & Deployed</div>
+            <div class="activity-sub">Wider layout, IAR/Team + AUM columns, compact buttons, bulk Empty Trash. Commit 998f768.</div>
+          </div>
+          <div class="activity-time">Feb 11</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-dot dot-blue"></div>
+          <div class="activity-content">
+            <div class="activity-title">DocuSign Production — Decision Needed</div>
+            <div class="activity-sub">Schwab instance is admin-locked. Go Live path recommended for developer app.</div>
+          </div>
+          <div class="activity-time">Feb 11</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-dot dot-green"></div>
+          <div class="activity-content">
+            <div class="activity-title">TCM MAP Application — Phase 1 Complete</div>
+            <div class="activity-sub">IAR workflow enhancements, multi-account picker, role-based access, DocuSign signing</div>
+          </div>
+          <div class="activity-time">Feb 11</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-dot dot-green"></div>
+          <div class="activity-content">
+            <div class="activity-title">Schwab Accounts Data Loaded</div>
+            <div class="activity-sub">2,639 accounts + 86 IAR rep codes imported into Supabase</div>
+          </div>
+          <div class="activity-time">Feb 11</div>
+        </div>
+        <div class="activity-item">
+          <div class="activity-dot dot-bronze"></div>
+          <div class="activity-content">
+            <div class="activity-title">Tech & Integrations category populated</div>
+            <div class="activity-sub">7 items: MAP app status, Supabase schema, DocuSign integration, deployment</div>
+          </div>
+          <div class="activity-time">Feb 11</div>
+        </div>
+        <div class="activity-item">
           <div class="activity-dot dot-bronze"></div>
           <div class="activity-content">
             <div class="activity-title">Brand & Design category created</div>
             <div class="activity-sub">3 concepts added for managed program branding</div>
           </div>
-          <div class="activity-time">Just now</div>
+          <div class="activity-time">Earlier</div>
         </div>
         <div class="activity-item">
           <div class="activity-dot dot-green"></div>
@@ -1289,7 +1398,7 @@
             <div class="activity-title">Triumph Lab launched</div>
             <div class="activity-sub">Decision hub is live for team review</div>
           </div>
-          <div class="activity-time">Just now</div>
+          <div class="activity-time">Earlier</div>
         </div>
       </div>
     </div>
@@ -1368,15 +1477,283 @@
     <div class="page" id="page-tech">
       <div class="page-header">
         <div class="page-title">Tech & Integrations</div>
-        <div class="page-desc">Black Diamond API, Supabase architecture, Schwab/Fidelity connectivity, AI features.</div>
+        <div class="page-desc">Black Diamond API, Supabase architecture, Schwab/Fidelity connectivity, DocuSign eSignature, AI features.</div>
       </div>
-      <div class="empty-state">
-        <div class="empty-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+
+      <!-- TCM MAP Application -->
+      <div class="section-header">
+        <div class="section-title">TCM MAP Application</div>
+        <span class="section-link">Managed Account Program Onboarding</span>
+      </div>
+      <div class="cards-grid">
+
+        <div class="decision-card">
+          <div class="card-top">
+            <div class="card-title">Application Status — Feature Complete (Phase 1)</div>
+            <span class="status-badge badge-approved">Completed</span>
+          </div>
+          <div class="card-body">
+            <div class="card-desc">
+              Single-page web application for IAR-to-client onboarding of managed accounts. Built with vanilla JS + Supabase backend.<br><br>
+              <strong>Completed Features:</strong><br>
+              &bull; Multi-form types: Full MAP, TTAMP MAP, TTAMP Agreement, Institutional MAP<br>
+              &bull; 16-step wizard with conditional visibility per form type<br>
+              &bull; Client directory search from 2,639 Schwab accounts in Supabase<br>
+              &bull; IAR workflow: non-linear stepper, step validation with green checkmarks<br>
+              &bull; Multi-account client picker (grouped by email, account selection modal)<br>
+              &bull; IAR-only sections: Management, Schedule A, TTAMP Models (read-only for clients)<br>
+              &bull; Simplified client signing view (only incomplete steps shown)<br>
+              &bull; Email invitations via Supabase Edge Function + Resend API<br>
+              &bull; DocuSign embedded signing integration (developer environment)<br>
+              &bull; Application lifecycle: draft, sent, viewed, signed, completed, voided<br>
+              &bull; Trash/restore functionality for applications
+            </div>
+          </div>
         </div>
-        <div class="empty-title">Nothing here yet</div>
-        <div class="empty-divider"></div>
-        <div class="empty-desc">API architecture decisions, database schema reviews, and integration status updates will appear here as they're added.</div>
+
+        <div class="decision-card">
+          <div class="card-top">
+            <div class="card-title">Supabase Database — Schema & Data Loaded</div>
+            <span class="status-badge badge-approved">Live</span>
+          </div>
+          <div class="card-body">
+            <div class="card-desc">
+              <strong>Project:</strong> pwqdjrezeqxpqercoarv.supabase.co<br><br>
+              <strong>Tables:</strong><br>
+              &bull; <code>applications</code> — MAP form submissions with full JSON data<br>
+              &bull; <code>schwab_accounts</code> — 2,639 client accounts loaded from Schwab export<br>
+              &bull; <code>iar_rep_codes</code> — 86 IAR rep codes across Schwab, Fidelity, Security Benefit<br>
+              &bull; <code>client_directory</code> — Legacy table (replaced by schwab_accounts)<br><br>
+              <strong>Security:</strong> Row Level Security enabled on all tables. Service role for bulk ops, authenticated users for read access.
+            </div>
+          </div>
+        </div>
+
+        <div class="decision-card">
+          <div class="card-top">
+            <div class="card-title">IAR Rep Code Mapping</div>
+            <span class="status-badge badge-approved">Loaded</span>
+          </div>
+          <div class="card-body">
+            <div class="card-desc">
+              86 IAR rep codes mapped across 3 custodians:<br><br>
+              &bull; <strong>Schwab:</strong> 54 rep codes (13 TTAMP-enabled)<br>
+              &bull; <strong>Fidelity:</strong> 14 rep codes<br>
+              &bull; <strong>Security Benefit:</strong> 18 rep codes<br><br>
+              IARs: Brandon Drespling, Brent McGibbon, Brian Stark, Christopher Kolker, Cook/Peters, Cory Robinson, Dan Mayer, Derek Eichenwald, Eichenwald/Drespling, Greg Schowe, Schowe/Waters, Shea Winkeller, Stark/Mayer, Stark/Robinson, Stephen Murphy, Tim Waters
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DocuSign Integration -->
+      <div class="section-header">
+        <div class="section-title">DocuSign eSignature Integration</div>
+        <span class="section-link">Signing Workflow</span>
+      </div>
+      <div class="cards-grid">
+
+        <div class="decision-card expandable" onclick="toggleCardDetail(this)">
+          <div class="card-top">
+            <div class="card-title">DocuSign Developer Environment — Working</div>
+            <span class="status-badge badge-approved">Active</span>
+          </div>
+          <div class="card-body">
+            <div class="card-desc">
+              Embedded signing via Supabase Edge Function using JWT/RSA authentication. Fully functional for testing in developer sandbox.
+            </div>
+          </div>
+          <div class="card-detail">
+            <div class="card-detail-inner">
+              <div class="detail-label">Developer Account</div>
+              &bull; Email: jt@triumphcapitalmanagement.com<br>
+              &bull; Integration Key: <code>9614d768-9917-4dbd-91f8-009d827da394</code><br>
+              &bull; Base URL: <code>demo.docusign.net</code><br>
+              &bull; Auth URL: <code>account-d.docusign.com</code><br>
+
+              <div class="detail-label">Authentication Method</div>
+              JWT (JSON Web Token) with RSA key pair. Private key stored as Supabase Edge Function secret. No user interaction needed for token refresh.
+
+              <div class="detail-label">Signing Flow</div>
+              1. TCM MAP app calls Supabase Edge Function with envelope data<br>
+              2. Edge Function authenticates via JWT → gets access token<br>
+              3. Creates envelope with PDF document + signing tabs<br>
+              4. Returns embedded signing URL for client/IAR<br>
+              5. Client signs in-browser → webhook updates application status
+
+              <div class="detail-label">What Carries Over to Production</div>
+              The Integration Key itself stays the same after Go Live. Only 3 config values change (base URL, account ID, auth URL). All code, templates, and signing logic remain identical.
+            </div>
+          </div>
+        </div>
+
+        <div class="decision-card expandable" onclick="toggleCardDetail(this)">
+          <div class="card-top">
+            <div class="card-title">Schwab DocuSign — No API Available</div>
+            <span class="status-badge badge-rejected">Closed</span>
+          </div>
+          <div class="card-body">
+            <div class="card-desc">
+              Schwab confirmed they do not offer API integrations for their DocuSign instance. Using TCM's own account instead.
+            </div>
+          </div>
+          <div class="card-detail">
+            <div class="card-detail-inner">
+              <div class="detail-label">Investigation Summary</div>
+              Explored the Schwab-licensed DocuSign account to determine if API integration was possible for production use.
+
+              <div class="detail-label">Schwab Account Details</div>
+              &bull; Account #4401432 — Charles Schwab & Co, Inc<br>
+              &bull; User: Jeff Thomas (jt@triumphcapitalmanagement.com)<br>
+              &bull; Connected Apps found: Zapier, JotForm<br>
+
+              <div class="detail-label">Technical Findings</div>
+              &bull; No API Keys page available in admin<br>
+              &bull; Admin console redirects to login (no admin role granted)<br>
+              &bull; Cannot create Integration Keys or RSA key pairs<br>
+              &bull; Schwab controls all admin and security settings<br>
+
+              <div class="detail-label">Schwab Confirmation</div>
+              Jeff spoke with Schwab directly — they confirmed they do not offer API integrations for their DocuSign instances.
+
+              <div class="detail-label">Resolution</div>
+              Use Triumph Capital Management's own DocuSign account (Info@triumphcapitalmanagement.com) which has full admin access and API integration capabilities.
+            </div>
+          </div>
+        </div>
+
+        <div class="decision-card expandable" onclick="toggleCardDetail(this)">
+          <div class="card-top">
+            <div class="card-title">TCM Production DocuSign — API Confirmed</div>
+            <span class="status-badge badge-approved">Verified</span>
+          </div>
+          <div class="card-body">
+            <div class="card-desc">
+              Triumph Capital Management's own DocuSign account has full API/Integration capabilities. Account verified at na3.docusign.net with admin access.
+            </div>
+          </div>
+          <div class="card-detail">
+            <div class="card-detail-inner">
+              <div class="detail-label">Production Account</div>
+              &bull; Account: Info@triumphcapitalmanagement.com<br>
+              &bull; Account Name: Triumph Capital Management<br>
+              &bull; Account ID (numeric): 29347645<br>
+              &bull; Admin User: Derek N. Citerowski<br>
+              &bull; Completed Envelopes: 252 (last 6 months)<br>
+
+              <div class="detail-label">API Configuration Values</div>
+              &bull; API Account ID: <code>8aaefee3-b75d-4597-bf6c-7f52e07f09d1</code><br>
+              &bull; Base URI: <code>https://na3.docusign.net</code><br>
+              &bull; Auth URL: <code>account.docusign.com</code> (production)<br>
+
+              <div class="detail-label">Available Integration Features</div>
+              &bull; Apps and Keys — Integration Key management<br>
+              &bull; API Usage Center — Monitor API calls<br>
+              &bull; CORS — Configure allowed origins<br>
+              &bull; Connect — Webhook event notifications<br>
+
+              <div class="detail-label">Current Status</div>
+              No Integration Keys created yet. Keys are created in the developer account and migrated to production via the Go Live process. The existing developer IK (9614d768-...) will be used.
+            </div>
+          </div>
+        </div>
+
+        <div class="decision-card expandable" onclick="toggleCardDetail(this)">
+          <div class="card-top">
+            <div class="card-title">Go Live Migration — Plan Confirmed</div>
+            <span class="status-badge badge-review">When Ready</span>
+          </div>
+          <div class="card-body">
+            <div class="card-desc">
+              Finish building the full portal and flow on developer sandbox first, then swap 3 config values to go live on TCM's production account. No blockers remaining.
+            </div>
+          </div>
+          <div class="card-detail">
+            <div class="card-detail-inner">
+              <div class="detail-label">Strategy</div>
+              Build and test everything using the developer sandbox (jt@triumphcapitalmanagement.com). When the portal and signing flow are complete, submit Go Live and swap config values. This avoids any risk to the production account during development.
+
+              <div class="detail-label">Go Live Steps</div>
+              1. Submit Integration Key (<code>9614d768-...</code>) for DocuSign "Go Live" review<br>
+              2. Pass automated API usage review (~24 hours)<br>
+              3. Grant application consent on TCM production account<br>
+              4. Update Supabase Edge Function config values<br>
+              5. Test end-to-end on production
+
+              <div class="detail-label">Config Swap — 3 Values</div>
+              <table style="width:100%; font-size:12px; margin-top:4px; border-collapse:collapse;">
+                <tr style="border-bottom:1px solid var(--border-light);">
+                  <td style="padding:4px 0; font-weight:600;">Base URL</td>
+                  <td style="padding:4px 8px; color:var(--text-muted);">demo.docusign.net</td>
+                  <td style="padding:4px 0;">→</td>
+                  <td style="padding:4px 8px;"><code>na3.docusign.net</code></td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border-light);">
+                  <td style="padding:4px 0; font-weight:600;">Account ID</td>
+                  <td style="padding:4px 8px; color:var(--text-muted);">(sandbox ID)</td>
+                  <td style="padding:4px 0;">→</td>
+                  <td style="padding:4px 8px;"><code>8aaefee3-b75d-...</code></td>
+                </tr>
+                <tr>
+                  <td style="padding:4px 0; font-weight:600;">Auth URL</td>
+                  <td style="padding:4px 8px; color:var(--text-muted);">account-d.docusign.com</td>
+                  <td style="padding:4px 0;">→</td>
+                  <td style="padding:4px 8px;"><code>account.docusign.com</code></td>
+                </tr>
+              </table>
+
+              <div class="detail-label">Production Target</div>
+              Triumph Capital Management — Info@triumphcapitalmanagement.com<br>
+              API Account ID: <code>8aaefee3-b75d-4597-bf6c-7f52e07f09d1</code>
+
+              <div class="detail-label">Blockers</div>
+              None. All production details confirmed. Ready to execute whenever the portal build is complete.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deployment & Repository -->
+      <div class="section-header">
+        <div class="section-title">Deployment & Repository</div>
+        <span class="section-link">Infrastructure</span>
+      </div>
+      <div class="cards-grid">
+
+        <div class="decision-card">
+          <div class="card-top">
+            <div class="card-title">GitHub Repository</div>
+            <span class="status-badge badge-approved">Live</span>
+          </div>
+          <div class="card-body">
+            <div class="card-desc">
+              Repository: TCM MAP Application on GitHub<br>
+              Local path: C:\dev\2_lab\TCM MAP Application<br>
+              Latest commit: 33e4460 — IAR workflow enhancements<br><br>
+              <strong>Branching Discussion:</strong> Options explored for creating a separate version while keeping original intact. Recommended: Git branch + separate Vercel project. No action taken yet — exploratory only.
+            </div>
+          </div>
+        </div>
+
+        <div class="decision-card">
+          <div class="card-top">
+            <div class="card-title">Version Branching Strategy</div>
+            <span class="status-badge badge-proposed">Under Consideration</span>
+          </div>
+          <div class="card-body">
+            <div class="card-desc">
+              Three options evaluated for creating a separate deployable version:<br><br>
+              <strong>Option 1 (Recommended):</strong> Git branch + separate Vercel project<br>
+              &bull; Same repo, new branch, new Vercel deployment<br>
+              &bull; Easy to maintain and sync changes<br><br>
+              <strong>Option 2:</strong> Fork to new repository<br>
+              &bull; Complete separation, independent history<br><br>
+              <strong>Option 3:</strong> Monorepo with subdirectories<br>
+              &bull; More complex, shared dependencies<br><br>
+              <strong>Status:</strong> No action taken — user wants to keep this option available for future.
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1457,6 +1834,11 @@
     models: 'Models & Investments',
     decisions: 'Team Decisions'
   };
+
+  function toggleCardDetail(el) {
+    const card = el.closest('.decision-card');
+    if (card) card.classList.toggle('expanded');
+  }
 
   function showPage(pageId) {
     // Update pages
