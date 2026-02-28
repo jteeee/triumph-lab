@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/login",
+      "destination": "https://auth.calyxion.com/login?redirect=https://lab.calyxion.com",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "destination": "https://auth.calyxion.com/login?redirect=https://lab.calyxion.com",
+      "permanent": false
+    }
+  ]
+}
